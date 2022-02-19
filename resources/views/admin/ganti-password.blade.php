@@ -32,7 +32,7 @@
 				identifier: 'confnewpass',
 				rules: [{
 					type   : 'match[newpass]',
-					prompt : 'Ulangi password tidak sama'
+					prompt : 'Konfirmasi password tidak sama'
 				}]
 			}
 		}
@@ -47,7 +47,7 @@
 	<h2 class='ui dividing header'>Ganti Password</h2>
 	<div class='ui grid'>
 		<div class='six wide computer sixteen wide mobile column'>
-			<form class="ui form" action="{{route('admin.akun.gantipass.post')}}" method="POST" id='formGantiPass'>
+			<form class="ui form" action="{{ route('admin.akun.gantipass.post') }}" method="POST" id='formGantiPass'>
 				@csrf
 				<div class='ui error message'>
 
@@ -61,8 +61,8 @@
 					<input type='password' name='newpass' id='newpass' placeholder="Password baru" />
 				</div>
 				<div class="field">
-					<label>Ulangi Password Baru</label>
-					<input type="password" name="confnewpass" id='confnewpass' placeholder="Ulangi password baru"/>
+					<label>Konfirmasi Password Baru</label>
+					<input type="password" name="confnewpass" id='confnewpass' placeholder="Konfirmasi password baru"/>
 				</div>
 				
 				<button type='submit' class='ui green button'><i class='save icon'></i>Simpan</button>

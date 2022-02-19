@@ -15,6 +15,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 
     // ganti password
+    Route::get('/ubah-akun', [UserController::class, 'ubahAkunTampil'])->name('admin.akun.ubah');
+    Route::post('/ubah-akun', [UserController::class, 'ubahAkun'])->name('admin.akun.ubah.post'); 
+
+    // ganti password
     Route::get('/ganti-password', [UserController::class, 'gantiPasswordTampil'])->name('admin.akun.gantipass');
     Route::post('/ganti-password', [UserController::class, 'gantiPassword'])->name('admin.akun.gantipass.post'); 
 });

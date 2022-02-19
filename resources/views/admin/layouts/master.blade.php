@@ -46,10 +46,10 @@
             <span id='modalinfo'>Info</span>
         </div>
         <div class="actions">
-            <div class="ui green ok inverted button">
+            <button type='button' class="ui green ok inverted button" id='btnOkMessage'>
                 <i class="checkmark icon"></i>
                 Ok
-            </div>
+            </button>
         </div>
     </div>
 

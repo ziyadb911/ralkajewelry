@@ -26,10 +26,12 @@
         Akun
     </div>
     <div class="{{ strpos(Route::currentRouteName(), 'admin.akun.') !== false ? 'active ' : '' }} content">
-        <a class="{{ Route::currentRouteName() == 'admin.akun.ubah' ? 'active ' : '' }}item" href="#">
+        <a class="{{ Route::currentRouteName() == 'admin.akun.ubah' ? 'active ' : '' }}item"
+            href="{{ route('admin.akun.ubah') }}">
             <i class='user edit icon'></i>Ubah Akun
         </a>
-        <a class="{{ Route::currentRouteName() == 'admin.akun.gantipass' ? 'active ' : '' }}item" href="{{ route('admin.akun.gantipass') }}">
+        <a class="{{ Route::currentRouteName() == 'admin.akun.gantipass' ? 'active ' : '' }}item"
+            href="{{ route('admin.akun.gantipass') }}">
             <i class='lock icon'></i>Ganti Password
         </a>
     </div>
