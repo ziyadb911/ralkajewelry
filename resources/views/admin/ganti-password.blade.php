@@ -40,7 +40,17 @@
 @endsection
 
 @section('jsfunction')
+function showModalConfirm(){
+		$('#formGantiPass').form('validate form');
+		if($('#formGantiPass').form('is valid')){
+			$("#modalConfirm").modal("show");
+		}
+	}
 	
+	function submitForm(){
+		$('#formGantiPass').addClass('loading');
+		$("#formGantiPass").submit();
+	}
 @endsection
 
 @section('content')
@@ -65,8 +75,27 @@
 					<input type="password" name="confnewpass" id='confnewpass' placeholder="Konfirmasi password baru"/>
 				</div>
 				
-				<button type='submit' class='ui green button'><i class='save icon'></i>Simpan</button>
+				<button type='button' onclick="showModalConfirm()" class='ui green button'><i class='save icon'></i>Simpan</button>
 			</form>
+		</div>
+	</div>
+@endsection
+
+@section('additional')
+    <div class="ui basic modal" id="modalConfirm">
+		<div class="ui icon header">
+			<i class="save icon"></i>
+			Apakah anda yakin ingin mengganti password?
+		</div>
+		<div class="actions">
+			<div class="ui red basic cancel inverted button">
+				<i class="remove icon"></i>
+				Batal
+			</div>
+			<button type="button" onclick="submitForm()" class="ui green ok inverted button">
+				<i class="checkmark icon"></i>
+				Ya
+			</button>
 		</div>
 	</div>
 @endsection

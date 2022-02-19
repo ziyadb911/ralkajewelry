@@ -8,6 +8,7 @@
 
 @section('content')
     <h2 class='ui dividing header'>Dashboard</h2>
+    {{ now() }}
 @endsection
 
 @section('additional')
