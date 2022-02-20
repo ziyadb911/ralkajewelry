@@ -19,6 +19,9 @@
 <a class="{{ strpos(Route::currentRouteName(), 'admin.artikel') !== false ? 'active ' : '' }}item" href="#">
     <i class='newspaper icon'></i>Artikel
 </a>
+<a class="{{ Route::currentRouteName() == 'admin.infoperusahaan' ? 'active ' : '' }}item" href="{{ route('admin.infoperusahaan') }}">
+    <i class='building icon'></i>Informasi Perusahaan
+</a>
 <div class='item'>
     <div class="{{ strpos(Route::currentRouteName(), 'admin.akun.') !== false ? 'active ' : '' }}title">
         <i class="dropdown icon"></i>

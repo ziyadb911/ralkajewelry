@@ -40,7 +40,7 @@
 @endsection
 
 @section('jsfunction')
-function showModalConfirm(){
+	function showModalConfirm(){
 		$('#formGantiPass').form('validate form');
 		if($('#formGantiPass').form('is valid')){
 			$("#modalConfirm").modal("show");
@@ -54,25 +54,23 @@ function showModalConfirm(){
 @endsection
 
 @section('content')
-	<h2 class='ui dividing header'>Ganti Password</h2>
+	<h2 class='ui dividing header'><i class='lock small icon'></i>Ganti Password</h2>
 	<div class='ui grid'>
 		<div class='six wide computer sixteen wide mobile column'>
 			<form class="ui form" action="{{ route('admin.akun.gantipass.post') }}" method="POST" id='formGantiPass'>
 				@csrf
-				<div class='ui error message'>
-
-				</div>
+				<div class='ui error message'></div>
 				<div class="field">
 					<label>Password Lama</label>
-					<input type="password" name="oldpass" id='oldpass' placeholder="Password lama"/>
+					<input type="password" name="oldpass" id='oldpass' placeholder="Password lama" autocomplete="off">
 				</div>
 				<div class="field">
 					<label>Password Baru</label>
-					<input type='password' name='newpass' id='newpass' placeholder="Password baru" />
+					<input type='password' name='newpass' id='newpass' placeholder="Password baru" autocomplete="off">
 				</div>
 				<div class="field">
 					<label>Konfirmasi Password Baru</label>
-					<input type="password" name="confnewpass" id='confnewpass' placeholder="Konfirmasi password baru"/>
+					<input type="password" name="confnewpass" id='confnewpass' placeholder="Konfirmasi password baru" autocomplete="off">
 				</div>
 				
 				<button type='button' onclick="showModalConfirm()" class='ui green button'><i class='save icon'></i>Simpan</button>

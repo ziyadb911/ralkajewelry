@@ -875,7 +875,7 @@
                                 <div class="single-icon">
                                     <i class="bi bi-phone"></i>
                                     <p>
-                                        Call: +1 5589 55488 55<br>
+                                        Hubungi: {{ $company->phone1 ?? '' }}<br>
                                         <span>Monday-Friday (9am-5pm)</span>
                                     </p>
                                 </div>
@@ -887,8 +887,8 @@
                                 <div class="single-icon">
                                     <i class="bi bi-envelope"></i>
                                     <p>
-                                        Email: info@example.com<br>
-                                        <span>Web: www.example.com</span>
+                                        Email: {{ $company->email ?? '' }}<br>
+                                        <span>Web: {{ $company->url ?? '' }}</span>
                                     </p>
                                 </div>
                             </div>
@@ -899,8 +899,7 @@
                                 <div class="single-icon">
                                     <i class="bi bi-geo-alt"></i>
                                     <p>
-                                        Location: A108 Adam Street<br>
-                                        <span>NY 535022, USA</span>
+                                        Alamat: {!! nl2br($company->address ?? '') !!}
                                     </p>
                                 </div>
                             </div>

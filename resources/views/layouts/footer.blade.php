@@ -15,16 +15,16 @@
                             <div class="footer-icons">
                                 <ul>
                                     <li>
-                                        <a href="#"><i class="bi bi-facebook"></i></a>
+                                        <a href="#"><i class="bi bi-whatsapp"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="bi bi-twitter"></i></a>
+                                        <a href="#"><i class="bi bi-facebook"></i></a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="bi bi-instagram"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                                        <a href="#"><i class="bi bi-twitter"></i></a>
                                     </li>
                                 </ul>
                             </div>
