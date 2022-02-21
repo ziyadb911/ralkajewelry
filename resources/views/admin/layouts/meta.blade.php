@@ -3,8 +3,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Ralka Jewelry</title>
 <script src="{{ URL::asset('vendor/jquery/jquery-3.6.0.min.js') }}"></script>
-<link rel="stylesheet" href="{{ URL::asset('admin/semantic.min.css') }}" />
-<script src="{{ URL::asset('admin/semantic.min.js') }}"></script>
+<link rel="stylesheet" href="{{ URL::asset('vendor/semantic/semantic.min.css') }}" />
+<script src="{{ URL::asset('vendor/semantic/semantic.min.js') }}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
     body {

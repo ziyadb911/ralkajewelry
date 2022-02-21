@@ -17,19 +17,63 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // ---------------START ADMIN---------------
 Route::group(['middleware' => ['auth']], function () {
-    // dashboard
-    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
-    
-    // informasi perusahaan
-    Route::get('/informasi-perusahaan', [InfoPerusahaanController::class, 'infoPerusahaanTampil'])->name('admin.infoperusahaan');
-    Route::post('/informasi-perusahaan', [InfoPerusahaanController::class, 'ubahInfoPerusahaan'])->name('admin.infoperusahaan.post');
+    Route::prefix('/admin')->group(function () {
+        // dashboard
+        Route::get('/', function () {
+            return redirect()->route('admin.dashboard');
+        });
+        Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 
-    // ubah akun
-    Route::get('/ubah-akun', [UserController::class, 'ubahAkunTampil'])->name('admin.akun.ubah');
-    Route::post('/ubah-akun', [UserController::class, 'ubahAkun'])->name('admin.akun.ubah.post'); 
+        // tag
+        Route::resource('tag', TagController::class)->parameters([
+            'tag' => 'tag'
+        ])->names([
+            'index' => 'admin.tag',
+            'create' => 'admin.tag.tambah',
+            'show' => 'admin.tag.lihat',
+            'store' => 'admin.tag.tambah.post',
+            'edit' => 'admin.tag.ubah',
+            'update' => 'admin.tag.ubah.put',
+            'destroy' => 'admin.tag.ubah.hapus',
+        ]);
 
-    // ganti password
-    Route::get('/ganti-password', [UserController::class, 'gantiPasswordTampil'])->name('admin.akun.gantipass');
-    Route::post('/ganti-password', [UserController::class, 'gantiPassword'])->name('admin.akun.gantipass.post'); 
+        // kategori artikel
+        Route::resource('kategori-artikel', ArticleCategoryController::class)->parameters([
+            'kategori-artikel' => 'articleCategory'
+        ])->names([
+            'index' => 'admin.kategoriartikel',
+            'create' => 'admin.kategoriartikel.tambah',
+            'show' => 'admin.kategoriartikel.lihat',
+            'store' => 'admin.kategoriartikel.tambah.post',
+            'edit' => 'admin.kategoriartikel.ubah',
+            'update' => 'admin.kategoriartikel.ubah.put',
+            'destroy' => 'admin.kategoriartikel.ubah.hapus',
+        ]);
+
+        // artikel
+        Route::resource('artikel', ArticleController::class)->parameters([
+            'artikel' => 'article'
+        ])->names([
+            'index' => 'admin.artikel',
+            'create' => 'admin.artikel.tambah',
+            'store' => 'admin.artikel.tambah.post',
+            'show' => 'admin.artikel.lihat',
+            'edit' => 'admin.artikel.ubah',
+            'update' => 'admin.artikel.ubah.put',
+            'destroy' => 'admin.artikel.ubah.hapus',
+        ]);
+
+        // informasi perusahaan
+        Route::get('/informasi-perusahaan', [InfoPerusahaanController::class, 'infoPerusahaanTampil'])->name('admin.infoperusahaan');
+        Route::post('/informasi-perusahaan', [InfoPerusahaanController::class, 'ubahInfoPerusahaan'])->name('admin.infoperusahaan.post');
+
+        // ubah akun
+        Route::get('/ubah-akun', [UserController::class, 'ubahAkunTampil'])->name('admin.akun.ubah');
+        Route::post('/ubah-akun', [UserController::class, 'ubahAkun'])->name('admin.akun.ubah.post');
+
+        // ganti password
+        Route::get('/ganti-password', [UserController::class, 'gantiPasswordTampil'])->name('admin.akun.gantipass');
+        Route::post('/ganti-password', [UserController::class, 'gantiPassword'])->name('admin.akun.gantipass.post');
+    });
 });
 // ---------------END ADMIN---------------
