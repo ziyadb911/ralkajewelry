@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
             'store' => 'admin.tag.tambah.post',
             'edit' => 'admin.tag.ubah',
             'update' => 'admin.tag.ubah.put',
-            'destroy' => 'admin.tag.ubah.hapus',
+            'destroy' => 'admin.tag.hapus',
         ]);
 
         // kategori artikel
@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
             'store' => 'admin.kategoriartikel.tambah.post',
             'edit' => 'admin.kategoriartikel.ubah',
             'update' => 'admin.kategoriartikel.ubah.put',
-            'destroy' => 'admin.kategoriartikel.ubah.hapus',
+            'destroy' => 'admin.kategoriartikel.hapus',
         ]);
 
         // artikel
@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
             'show' => 'admin.artikel.lihat',
             'edit' => 'admin.artikel.ubah',
             'update' => 'admin.artikel.ubah.put',
-            'destroy' => 'admin.artikel.ubah.hapus',
+            'destroy' => 'admin.artikel.hapus',
         ]);
 
         // informasi perusahaan

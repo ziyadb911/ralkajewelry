@@ -14,6 +14,7 @@
         // create sidebar and attach to menu open
         $('.ui.sidebar').sidebar('attach events', '.toc.item');
         $('.formsearch').submit(function() {
+            $('.formsearch').addClass('loading');
             $('.formsearch').find('input').each(function() {
                 var input = $(this);
                 if (!input.val()) {
@@ -21,6 +22,10 @@
                 }
             });
         });
+        $('.popuphover').popup({
+            on    : 'hover'
+        });
+        $('.dimmerloading').dimmer({closable:false});
         $('.ui.dropdown:not(:required)').dropdown({
             selectOnKeyDown: true,
             forceSelection: false,

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <h2 class='ui dividing header'>Detail Kategori Artikel</h2>
+    <h2 class='ui dividing header'><i class='filter small icon'></i>Detail Kategori Artikel</h2>
     {{$articleCategory}}
 @endsection
 

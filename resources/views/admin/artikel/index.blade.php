@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <h2 class='ui dividing header'>Dashboard</h2>
+    <h2 class='ui dividing header'><i class='newspaper small icon'></i>Artikel</h2>
     {{ now() }}
 @endsection
 

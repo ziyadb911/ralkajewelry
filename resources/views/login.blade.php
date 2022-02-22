@@ -27,7 +27,7 @@
 					<div class='ui ten wide computer sixteen wide mobile column'>
 						<div class="ui stacked segment">
 							<form class="ui large {{ $errors->any() ? 'error' : '' }} form" id="formlogin" name="formlogin" method="POST" action="{{ route('login.post') }}">
-								{{csrf_field()}}
+								@csrf
 								<div class='ui error message'>
 	                                <ul>
 		                                @foreach ($errors->all() as $error)
