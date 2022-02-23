@@ -18,11 +18,11 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login(Request $req)
+    public function login(Request $request)
     {
         try {
-            $username = $req->username;
-            $password = $req->password;
+            $username = $request->username;
+            $password = $request->password;
             $admin = User::where('username', $username)->first();
             if (!isset($admin) || !Hash::check($password, $admin->password)) {
                 throw new Exception("Username atau Password Salah");

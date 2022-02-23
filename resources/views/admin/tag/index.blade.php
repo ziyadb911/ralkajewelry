@@ -32,8 +32,8 @@
     <form class='ui form formsearch' action="" method='GET'>
         <div class="fields">
             <div class='five wide field'>
-                <label>Nama</label>
-                <input type='text' name='nama' placeholder='Nama' autocomplete="off" value="{{ request()->get('nama') ?? '' }}" />
+                <label>Nama Tag</label>
+                <input type='text' name='nama' placeholder='Nama Tag' autocomplete="off" value="{{ request()->get('nama') ?? '' }}" />
             </div>
             <div class='field'>
                 <label>&nbsp;</label>
@@ -45,7 +45,7 @@
         <table class='ui table'>
             <thead>
                 <tr>
-                    <th>Nama</th>
+                    <th>Nama Tag</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -55,7 +55,7 @@
                         <td>{{ $data->name ?? '' }}</td>
                         <td>
                             <a class='ui small blue icon button popuphover' href="{{ route('admin.tag.lihat', ['tag' => $data]) }}" data-content="Detail">
-                                <i class="eye icon"></i>
+                                <i class="info icon"></i>
                             </a>
                             <a class='ui small yellow icon button popuphover' href="{{ route('admin.tag.ubah', ['tag' => $data]) }}" data-content="Ubah">
                                 <i class="write icon"></i>

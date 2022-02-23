@@ -8,10 +8,10 @@
 
 @section('content')
     <h2 class='ui dividing header'><i class='tags small icon'></i>Detail Tag</h2>
-    <a class='ui yellow button' href="{{ url()->previous() }}"><i class='left arrow icon'></i>Kembali</a>
+    <a class='ui yellow button' href="{{ route('admin.tag') }}"><i class='left arrow icon'></i>Kembali</a>
     <table class='ui very basic table'>
 		<tr>
-			<td style="width:15%"><h4 class='ui header'>Nama</h4></td>
+			<td style="width:15%"><h4 class='ui header'>Nama Tag</h4></td>
 			<td style="width:85%">{{ $tag->name }}</td>
 		</tr>
 		<tr>

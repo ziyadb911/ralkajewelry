@@ -18,10 +18,10 @@ class InfoPerusahaanController extends Controller
         return view('admin.info-perusahaan', $data);
     }
 
-    public function ubahInfoPerusahaan(Request $req)
+    public function ubahInfoPerusahaan(Request $request)
     {
         $company = CompanyInfo::findOrFail(1);
-        $validated = $req->validate([
+        $validated = $request->validate([
             'name' => ["required", "min:2", "max:100"],
             'phone1' => ["nullable", "max:20"],
             'phone2' => ["nullable", "max:20"],

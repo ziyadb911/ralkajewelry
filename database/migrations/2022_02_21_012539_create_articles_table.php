@@ -27,6 +27,7 @@ class CreateArticlesTable extends Migration
             //USER, TIMESTAMP
             $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();
+            $table->foreignId('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -34,6 +35,7 @@ class CreateArticlesTable extends Migration
             $table->foreign('article_category_id')->references('id')->on('article_categories');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
+            $table->foreign('deleted_by')->references('id')->on('users');
 
             
         });

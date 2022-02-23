@@ -20,10 +20,10 @@ class UserController extends Controller
         return view('admin.ubah-akun', $data);
     }
 
-    public function ubahAkun(Request $req)
+    public function ubahAkun(Request $request)
     {
         $user = Auth::user();
-        $validated = $req->validate([
+        $validated = $request->validate([
             'name' => ["required", "min:2", "max:200"],
             'email' => ["required", "email", "min:2", "max:100", "unique:App\Models\User,email,$user->id,NULL"],
             'username' => ["required", "min:2", "max:100", "unique:App\Models\User,username,$user->id,NULL"],
@@ -63,10 +63,10 @@ class UserController extends Controller
         return view('admin.ganti-password');
     }
 
-    public function gantiPassword(Request $req)
+    public function gantiPassword(Request $request)
     {
-        $passlama = $req->oldpass;
-        $passbaru = $req->newpass;
+        $passlama = $request->oldpass;
+        $passbaru = $request->newpass;
         $user = Auth::user();
         if (Hash::check($passlama, $user->password)) {
             $user->password = Hash::make($passbaru);
