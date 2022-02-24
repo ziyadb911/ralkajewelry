@@ -93,11 +93,11 @@
                 </div>
             </div>
             <div class='four wide field'>
-                <label>Publish</label>
-                <select class='ui selection dropdown' id="publish" name="publish">
-                    <option value="">Publish</option>
-                    <option value="1"{{ request()->get("publish") == '1' ? ' selected' : '' }}>Ya</option>
-                    <option value="0"{{ request()->get("publish") == '0' ? ' selected' : '' }}>Tidak</option>
+                <label>Status</label>
+                <select class='ui selection dropdown' id="status" name="status">
+                    <option value="">Status</option>
+                    <option value="1"{{ request()->get("status") == '1' ? ' selected' : '' }}>Publish</option>
+                    <option value="0"{{ request()->get("status") == '0' ? ' selected' : '' }}>Hidden</option>
                 </select>
             </div>
             <div class='field'>
@@ -114,7 +114,7 @@
                     <th>Kategori</th>
                     <th>Tag</th>
                     <th>Tanggal</th>
-                    <th>Publish</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -122,10 +122,24 @@
                 @foreach ($articles as $data)
                     <tr>
                         <td>{{ $data->title ?? '' }}</td>
-                        <td>{{ $data->articleCategory->name ?? '' }}</td>
-                        <td></td>
+                        <td>
+                            @if(isset($data->articleCategory))
+                                <div class="ui purple horizontal label">{{ $data->articleCategory->name }}</div>
+                            @endif
+                        </td>
+                        <td>
+                            @if(isset($data->tags) && count($data->tags) > 0)
+                                @foreach($data->tags as $row)
+                                    <div class="ui grey horizontal label">{{ $row->name }}</div>
+                                @endforeach
+                            @endif
+                        </td>
                         <td>{{ $data->created_at_date ?? '' }}</td>
-                        <td>{{ $data->is_shown ?? '' }}</td>
+                        <td>
+                            <div class="ui {{ $data->is_shown == 1 ? 'teal' : 'red' }} horizontal label">
+                                {{ $data->is_shown == 1 ? 'PUBLISH' : 'HIDDEN' }}
+                            </div>
+                        </td>
                         <td>
                             <a class='ui small blue icon button popuphover' href="{{ route('admin.artikel.lihat', ['article' => $data]) }}" data-content="Detail">
                                 <i class="info icon"></i>

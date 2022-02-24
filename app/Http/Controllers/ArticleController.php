@@ -16,8 +16,8 @@ class ArticleController extends Controller
         $article_category_id = $request->kategori;
         $created_at_min = $request->tglmin;
         $created_at_max = $request->tglmaks;
-        $is_shown = $request->publish;
-        $articles = Article::with(['articleCategory'])
+        $is_shown = $request->status;
+        $articles = Article::with(['articleCategory', 'tags'])
             ->when(isset($title), function ($q) use ($title) {
                 $q->where('title', 'LIKE', "%$title%");
             })->when(isset($article_category_id), function ($q) use ($article_category_id) {
@@ -46,10 +46,10 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ["required", "max:100"],
+            'title' => ["required", "max:200"],
         ], [
-            'name.required' => 'Nama Tag tidak boleh kosong.',
-            'name.max' => 'Nama Tag maksimal 100 karakter.',
+            'title.required' => 'Judul tidak boleh kosong.',
+            'title.max' => 'Judul maksimal 200 karakter.',
         ]);
         DB::beginTransaction();
         try {

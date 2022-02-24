@@ -27,16 +27,32 @@ class Article extends Model
     {
         return $this->belongsTo(ArticleCategory::class);
     }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, ArticleTag::class);
+    }
 
-    public function getCreatedAtDateAttribute(){
+    public function userCreate()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+    public function userUpdate()
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    public function getCreatedAtDateAttribute()
+    {
         return isset($this->created_at) ? DateHelper::dateToString($this->created_at) : null;
     }
-    
-    public function getCreatedAtFormattedAttribute(){
+
+    public function getCreatedAtFormattedAttribute()
+    {
         return isset($this->created_at) ? DateHelper::dateTimeToString($this->created_at) : null;
     }
 
-    public function getUpdatedAtFormattedAttribute(){
+    public function getUpdatedAtFormattedAttribute()
+    {
         return isset($this->updated_at) ? DateHelper::dateTimeToString($this->updated_at) : null;
     }
 }
