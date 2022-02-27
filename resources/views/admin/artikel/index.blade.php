@@ -38,6 +38,18 @@
             $('.dimmerloading').dimmer('hide');
         })
     });
+
+    $('#formPublish').submit(function(e){
+        e.preventDefault();
+        $('.dimmerloading').dimmer('show');
+
+        ajaxPost(this).done(function(data){
+            $('.dimmerloading').dimmer('hide');
+            showMessage("info", data.message, "{!! Request::fullUrl() !!}");
+        }).fail(function(data){
+            $('.dimmerloading').dimmer('hide');
+        })
+    });
 @endsection
 
 @section('jsfunction')
@@ -45,6 +57,13 @@
         $("#judulHapus").html(judul);
         $("#formHapus").attr('action', route);
         $("#modalHapus").modal("show");
+    }
+
+    function showModalPublish(id, judul, text, route){
+        $("#judulPublish").html(judul);
+        $("#textPublish").html(text);
+        $("#formPublish").attr('action', route);
+        $("#modalPublish").modal("show");
     }
 @endsection
 
@@ -63,12 +82,21 @@
                 <label>Judul</label>
                 <input type='text' name='judul' placeholder='Judul' autocomplete="off" value="{{ request()->get('judul') ?? '' }}" />
             </div>
-            <div class='four wide field'>
+            <div class='three wide field'>
                 <label>Kategori</label>
                 <select class='ui search selection dropdown' id="kategori" name="kategori">
                     <option value="">Kategori</option>
                     @foreach ($articleCategories as $articleCategory)
                         <option value="{{ $articleCategory->id }}"{{ request()->get("kategori") == $articleCategory->id ? ' selected' : '' }}>{{ $articleCategory->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class='four wide field'>
+                <label>Tag</label>
+                <select class='ui search selection dropdown' id="tag" name="tag[]" multiple>
+                    <option value="">Tag</option>
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}"{{ in_array($tag->id, (request()->get("tag") ?? [])) ? ' selected' : '' }}>{{ $tag->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -78,7 +106,7 @@
                 <label>Tanggal Buat Min</label>
                 <div class='ui calendar' id='dtptglmin'>
                     <div class='ui input right icon'>
-                        <input type='text' placeholder='Tanggal Buat Min' autocomplete='off' value="{{ request()->get('tglmin') ?? '' }}">
+                        <input type='text' placeholder='Tanggal Buat Min' autocomplete="off" value="{{ request()->get('tglmin') ?? '' }}">
                         <i class='calendar icon'></i>
                     </div>
                 </div>
@@ -87,12 +115,12 @@
                 <label>Tanggal Buat Maks</label>
                 <div class='ui calendar' id='dtptglmaks'>
                     <div class='ui input right icon'>
-                        <input type='text' placeholder='Tanggal Buat Maks' autocomplete='off' value="{{ request()->get('tglmaks') ?? '' }}">
+                        <input type='text' placeholder='Tanggal Buat Maks' autocomplete="off" value="{{ request()->get('tglmaks') ?? '' }}">
                         <i class='calendar icon'></i>
                     </div>
                 </div>
             </div>
-            <div class='four wide field'>
+            <div class='three wide field'>
                 <label>Status</label>
                 <select class='ui selection dropdown' id="status" name="status">
                     <option value="">Status</option>
@@ -141,19 +169,19 @@
                             </div>
                         </td>
                         <td>
-                            <a class='ui small blue icon button popuphover' href="{{ route('admin.artikel.lihat', ['article' => $data]) }}" data-content="Detail">
-                                <i class="info icon"></i>
-                            </a>
-                            <div class="ui icon top left pointing dropdown button actionbutton popuphover" data-content="Lainnya">
+                            <div class="ui icon top left pointing dropdown button actionbutton popuphover">
                                 <i class="settings icon"></i>
                                 <div class="menu">
+                                    <a class='item' href="{{ route('admin.artikel.lihat', ['article' => $data]) }}">
+                                        <i class='info icon'></i>Detail
+                                    </a>
                                     <a class='item' href="{{ route('admin.artikel.ubah', ['article' => $data]) }}">
                                         <i class='write icon'></i>Ubah
                                     </a>
-                                    <a class='item' onclick="showModalHapus({{ $data->id }}, '{{ $data->title }}', '{{ route('admin.artikel.hapus', ['article' => $data]) }}')">
-                                        <i class='eye blue icon'></i>Publish
+                                    <a class='item' onclick="showModalPublish({{ $data->id }}, '{{ $data->title }}', '{{ $data->is_shown ? 'menyembunyikan' : 'mempublish'}}', '{{ route('admin.artikel.publish', ['article' => $data]) }}')">
+                                        <i class="eye{{ $data->is_shown ? ' slash' : ''}} icon"></i>{{ $data->is_shown ? 'Sembuyikan' : 'Publish'}}
                                     </a>
-                                    <a class='item' onclick="">
+                                    <a class='item' onclick="showModalHapus({{ $data->id }}, '{{ $data->title }}', '{{ route('admin.artikel.hapus', ['article' => $data]) }}')">
                                         <i class='trash red icon'></i>Hapus
                                     </a>
                                 </div>
@@ -205,6 +233,30 @@
                 Batal
             </div>
             <button type='submit' form="formHapus" class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Ya
+            </button>
+        </div>
+    </div>
+
+    <div class="ui basic modal" id='modalPublish'>
+        <div class="ui icon header">
+            <i class="trash icon"></i>
+            Apakah anda yakin ingin <span id="textPublish"></span> artikel ini?
+        </div>
+        <div class="content">
+            <p style="text-align: center" id="judulPublish"></p>
+            <form style="display:none" id="formPublish" action="" method="POST">
+                @csrf
+                @method('PUT')
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                Batal
+            </div>
+            <button type='submit' form="formPublish" class="ui green ok inverted button">
                 <i class="checkmark icon"></i>
                 Ya
             </button>

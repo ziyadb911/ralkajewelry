@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
 
         // artikel
+        Route::put('artikel/publish/{article}', [ArticleController::class, 'publish'])->name('admin.artikel.publish');
         Route::resource('artikel', ArticleController::class)->parameters([
             'artikel' => 'article'
         ])->names([

@@ -27,15 +27,22 @@ class Article extends Model
     {
         return $this->belongsTo(ArticleCategory::class);
     }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, ArticleTag::class);
+    }
+
+    public function articleTags()
+    {
+        return $this->hasMany(ArticleTag::class);
     }
 
     public function userCreate()
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
+
     public function userUpdate()
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');
