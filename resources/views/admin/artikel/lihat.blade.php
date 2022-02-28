@@ -49,7 +49,7 @@
             <td style="width:85%">{{ $article->userUpdate->name }} - {{ $article->updated_at_formatted }}</td>
         </tr>
 		<tr>
-			<td style="width:15%"><h4 class='ui header'>Gambar</h4></td>
+			<td style="width:15%"><h4 class='ui header'>Foto</h4></td>
 			<td style="width:85%">
                 @isset($article->image_url)
                     <a href="{{ URL::asset($article->image_url) }}" target="_blank" class='ui medium rounded image'>

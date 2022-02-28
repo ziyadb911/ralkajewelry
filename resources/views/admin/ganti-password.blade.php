@@ -4,7 +4,6 @@
 	@if(session()->has('pesan'))
 		alert("{{session('pesan')}}");
 	@endif
-	$('.ui.dropdown').dropdown();
 		$('#formGantiPass').form({
 		fields: {
 			oldpass:{

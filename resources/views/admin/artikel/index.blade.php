@@ -138,6 +138,7 @@
         <table class='ui table'>
             <thead>
                 <tr>
+                    <th>Foto</th>
                     <th>Judul</th>
                     <th>Kategori</th>
                     <th>Tag</th>
@@ -149,6 +150,11 @@
             <tbody>
                 @foreach ($articles as $data)
                     <tr>
+                        <td>
+                            <div class='ui tiny image'>
+                                <img src="{{ URL::asset($data->image_url ?? 'img/image-default.jpg') }}" />
+                            </div>
+                        </td>
                         <td>{{ $data->title ?? '' }}</td>
                         <td>
                             @if(isset($data->articleCategory))

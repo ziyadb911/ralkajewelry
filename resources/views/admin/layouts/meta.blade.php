@@ -2,9 +2,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Ralka Jewelry</title>
+{{-- icon --}}
+<link href="{{ URL::asset('img/favicon.png') }}" rel="icon">
+<link href="{{ URL::asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+{{-- jquery --}}
 <script src="{{ URL::asset('vendor/jquery/jquery-3.6.0.min.js') }}"></script>
+{{-- semantic --}}
 <link rel="stylesheet" href="{{ URL::asset('vendor/semantic/semantic.min.css') }}" />
 <script src="{{ URL::asset('vendor/semantic/semantic.min.js') }}"></script>
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
     body {

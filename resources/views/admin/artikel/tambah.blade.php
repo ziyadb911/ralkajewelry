@@ -2,6 +2,7 @@
 
 @section('footer')
     <script src="{{ URL::asset('vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ URL::asset('vendor/compressor/compressor.min.js') }}"></script>
     <style>
         .ck-editor__editable {
             height: 12em;
@@ -59,6 +60,45 @@
         }
     });
 
+    $('#image_url').change(function (e) {		
+		var jmlFoto = $('#imgPreview').find('.ui.image').length;
+		var inputFile = $(this)[0];
+		var files = inputFile.files;
+		if (files.length > 0) {
+			var uploadpath = inputFile.value;
+			var fileExtension = uploadpath.substring(uploadpath.lastIndexOf(".") + 1, uploadpath.length).toLowerCase();
+			if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
+				$(this).val("");
+				showMessage('error', 'Foto harus berupa file gambar (.jpg / .jpeg / .png).');
+				return;
+			}
+			if (files[0].size / 1024 / 1024 > 5) {
+				$(this).val("");
+				showMessage('error', 'File size tidak boleh melebihi 5 MB.');
+				return;
+			}
+            console.log(files.length);
+            $('#formData').addClass('loading');
+			$.each(files, function (key, val) {
+				compressImage(val).then(function (base64) {
+					var fotobaru = `<div class='ui medium image rounded' >
+                        <img src="${base64}" alt="image_url">
+					</div>`;
+					$('#imgPreview').html(fotobaru);
+					$('#formData').removeClass('loading');
+				}).catch(function (err) {
+					$('#formData').removeClass('loading');
+					console.log("ErrSelesai", err.message);
+				});
+			});
+		}else{
+            var fotobaru = `<div class='ui medium image rounded' >
+                Tidak ada foto
+            </div>`;
+            $('#imgPreview').html(fotobaru);
+        }
+	});
+
     $(window).keydown(function(event){
         if(event.keyCode == 13 && !$(document.activeElement).is('textarea')) {
             event.preventDefault();
@@ -77,18 +117,54 @@
     }).catch(error => {
         console.error(error);
     });
+
+    function compressImage(file) {
+        return new Promise((resolve, reject) => {
+            new Compressor(file, {
+                quality: 0.8,
+                maxHeight: 960,
+                mimeType: 'jpeg',
+                type: File,
+                success(result) {
+                    fileToBase64Promise(result).then(function (base64) {
+                        console.log('selesai base64', base64);
+                        resolve(base64);
+                    }).catch(function (error) {
+                        reject(error);
+                    });
+                },
+                error(err) {
+                    reject(err);
+                    console.log("error", err.message);
+                },
+            });
+        });
+    }
+
+    const fileToBase64Promise = (inputFile) => {
+        const temporaryFileReader = new FileReader();
+
+        return new Promise((resolve, reject) => {
+            temporaryFileReader.onerror = () => {
+                temporaryFileReader.abort();
+                reject(new DOMException("Problem parsing input file."));
+            };
+
+            temporaryFileReader.onloadend = () => {
+                resolve(temporaryFileReader.result);
+            };
+            temporaryFileReader.readAsDataURL(inputFile);
+        });
+    };
 @endsection
 
 @section('content')
     <h2 class='ui dividing header'><i class='newspaper small icon'></i>{{ isset($article) ? 'Ubah' : 'Tambah' }} Artikel</h2>
     <a class='ui yellow button' href="{{ route('admin.artikel') }}"><i class='left arrow icon'></i>Kembali</a>
     <br><br>
-    <form class='ui form' method='POST' id='formData' action="{{ isset($article) ? route('admin.artikel.ubah.put',['article' => $article]) : route('admin.artikel.tambah.post') }}">
-        <div class='ui error message'></div>
+    <form class='ui form' id='formData' method='POST' enctype="multipart/form-data" action="{{ isset($article) ? route('admin.artikel.ubah.post',['article' => $article]) : route('admin.artikel.tambah.post') }}">
         @csrf
-        @isset($article)
-            @method('PUT')
-        @endisset
+        <div class='ui error message'></div>
         <div class='fields'>
             <div class='ten wide required field'>
                 <label>Judul</label>
@@ -107,7 +183,7 @@
             </div>
         </div>
         <div class='fields'>
-            <div class='six wide field'>
+            <div class='eight wide field'>
                 <label>Tag</label>
                 <select class='ui search selection dropdown' name='tags[]' id='tags' multiple>
                     <option value="">Tag</option>
@@ -118,9 +194,28 @@
             </div>
         </div>
         <div class='fields'>
+            <div class='five wide field'>
+                <label>{{isset($article) ? 'Ganti' : ''}} Foto <span style="font-size: 8pt; font-weight: normal;">(Maks. 5MB)</span></label>
+                <input type='file' class='ui button' name='image_url' id='image_url' accept='.png, .jpg, .jpeg'>
+            </div>
+        </div>
+        <div class='ui medium images' id='imgPreview'>
+            @if(isset($article))
+                @if(isset($article->image_url))
+                    <div class='ui medium image rounded'>
+                        <img src="{{ URL::asset($article->image_url) }}" alt="{{ $article->image_url }}">
+                    </div>
+                @else
+                    <div class='ui medium image rounded'>
+                        Tidak ada foto
+                    </div>
+                @endif
+            @endif
+        </div>
+        <div class='fields'>
             <div class='sixteen wide required field'>
                 <label>Isi</label>
-                <textarea name="content" id="content" placeholder='isi konten artikel disini..' autocomplete="off">{{ $article->content ?? '' }}</textarea>
+                <textarea name="content" id="content" placeholder='isi konten artikel disini..' autocomplete="off">{!! $article->content ?? '' !!}</textarea>
             </div>
         </div>
         <div class='fields'>

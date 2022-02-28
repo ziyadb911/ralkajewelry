@@ -7,7 +7,9 @@ use App\Models\ArticleCategory;
 use App\Models\Tag;
 use DB;
 use Exception;
+use File;
 use Illuminate\Http\Request;
+use Image;
 use Str;
 
 class ArticleController extends Controller
@@ -86,7 +88,39 @@ class ArticleController extends Controller
             $validated['created_by'] = auth()->id();
             $validated['updated_by'] = auth()->id();
             $article = Article::create($validated);
-            $article->tags()->attach(array_values($request->tags));
+            if(isset($request->tags)){
+                $article->tags()->attach(array_values($request->tags));
+            }
+            if (isset($request->image_url)) {
+                $path = 'img/artikel';
+                if (!File::isDirectory($path)) {
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $namafoto = $article->slug . "-" . now()->format('Hisu') . '.jpg';
+                $img = Image::make($request->image_url);
+                $width = $img->width();
+                $height = $img->height();
+                $img = $img->encode('jpg', 100);
+                if ($width > $height) {
+                    if ($width > 1000) {
+                        $img->resize(1000, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                } else {
+                    if ($height > 1000) {
+                        $img->resize(null, 1000, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                }
+
+                $lokasisimpan = $path . "/" . $namafoto;
+                $img->save($lokasisimpan);
+
+                $article->image_url = $lokasisimpan;
+                $article->save();
+            }
             DB::commit();
             return response()->json([
                 'success' => true,
@@ -146,7 +180,42 @@ class ArticleController extends Controller
             $validated['updated_by'] = auth()->id();
             $article->update($validated);
             $article->tags()->detach();
-            $article->tags()->attach(array_values($request->tags));
+            if(isset($request->tags)){
+                $article->tags()->attach(array_values($request->tags));
+            }
+            if (isset($request->image_url)) {
+                if (File::exists($article->image_url)) {
+                    File::delete($article->image_url);
+                }
+                $path = 'img/artikel';
+                if (!File::isDirectory($path)) {
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $namafoto = $article->slug . "-" . now()->format('Hisu') . '.jpg';
+                $img = Image::make($request->image_url);
+                $width = $img->width();
+                $height = $img->height();
+                $img = $img->encode('jpg', 100);
+                if ($width > $height) {
+                    if ($width > 1000) {
+                        $img->resize(1000, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                } else {
+                    if ($height > 1000) {
+                        $img->resize(null, 1000, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                }
+
+                $lokasisimpan = $path . "/" . $namafoto;
+                $img->save($lokasisimpan);
+
+                $article->image_url = $lokasisimpan;
+                $article->save();
+            }
             DB::commit();
             return response()->json([
                 'success' => true,
@@ -165,6 +234,9 @@ class ArticleController extends Controller
     {
         DB::beginTransaction();
         try {
+            if(File::exists($article->image_url)){
+                File::delete($article->image_url);
+            }
             $article->update([
                 'updated_by' => auth()->id(),
                 'deleted_by' => auth()->id(),

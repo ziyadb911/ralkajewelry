@@ -51,8 +51,9 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
 
         // artikel
+        Route::post('artikel/{article}', [ArticleController::class, 'update'])->name('admin.artikel.ubah.post');
         Route::put('artikel/publish/{article}', [ArticleController::class, 'publish'])->name('admin.artikel.publish');
-        Route::resource('artikel', ArticleController::class)->parameters([
+        Route::resource('artikel', ArticleController::class)->except('update')->parameters([
             'artikel' => 'article'
         ])->names([
             'index' => 'admin.artikel',
@@ -60,7 +61,6 @@ Route::group(['middleware' => ['auth']], function () {
             'store' => 'admin.artikel.tambah.post',
             'show' => 'admin.artikel.lihat',
             'edit' => 'admin.artikel.ubah',
-            'update' => 'admin.artikel.ubah.put',
             'destroy' => 'admin.artikel.hapus',
         ]);
 
