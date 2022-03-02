@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\CompanyInfo;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,8 +18,32 @@ class HomeController extends Controller
         ];
         return view('home', $data);
     }
-    public function dashboard()
+
+    public function artikel(Request $request)
     {
-        return view('admin.dashboard');
+        $company = CompanyInfo::findOrFail(1);
+        $articleCategories = ArticleCategory::orderBy("name", "ASC")->get();
+        $tags = Tag::orderBy("name", "ASC")->get();
+        $articles = Article::where("is_shown", true)->orderBy("created_at", "DESC")->get();
+        $recentArticles = Article::where("is_shown", true)->orderBy("created_at", "DESC")->limit(4)->get();
+        $data = [
+            'company' => $company,
+            'articleCategories' => $articleCategories,
+            'tags' => $tags,
+            'articles' => $articles,
+            'recentArticles' => $recentArticles,
+        ];
+        return view('artikel', $data);
+    }
+
+    public function artikelDetail(Request $request)
+    {
+        $company = CompanyInfo::findOrFail(1);
+        $recentArticles = Article::where("is_shown", true)->orderBy("created_at", "DESC")->limit(4)->get();
+        $data = [
+            'company' => $company,
+            'recentArticles' => $recentArticles,
+        ];
+        return view('artikel-detail', $data);
     }
 }

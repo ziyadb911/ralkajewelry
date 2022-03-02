@@ -11,6 +11,7 @@ class CompanyInfoSeeder extends Seeder
 		[
 			"id" => 1,
 			"name" => "Ralka Jewelry",
+			"login_background" => "img/bg-login.jpg"
 		],
 	];
 	public function run()

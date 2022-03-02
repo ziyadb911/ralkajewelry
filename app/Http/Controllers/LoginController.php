@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompanyInfo;
 use App\Models\User;
 use Exception;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +17,11 @@ class LoginController extends Controller
         if (Auth::check()) {
             return redirect()->route('admin.dashboard');
         }
-        return view('login');
+        $company = CompanyInfo::findOrFail(1);
+        $data = [
+            'login_background' => File::exists($company->login_background) ? $company->login_background : 'img/bg-login.jpg',
+        ];
+        return view('login', $data);
     }
 
     public function login(Request $request)

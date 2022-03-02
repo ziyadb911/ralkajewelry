@@ -4,7 +4,7 @@
 	@include('admin.layouts.meta')
 	<style type="text/css">
 		body{
-			background-image: url("{{ URL::asset('img/bg-login.jpg') }}");
+			background-image: url("{{ URL::asset($login_background ?? 'img/bg-login.jpg') }}");
 			background-size: cover;
 			background-attachment: fixed;
 		}

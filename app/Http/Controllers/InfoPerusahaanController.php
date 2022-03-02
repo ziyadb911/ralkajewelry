@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\CompanyInfo;
 use DB;
 use Exception;
+use File;
 use Illuminate\Http\Request;
+use Image;
 
 class InfoPerusahaanController extends Controller
 {
@@ -33,7 +35,6 @@ class InfoPerusahaanController extends Controller
             'instagram' => ["nullable", "max:100"],
             'twitter' => ["nullable", "max:100"],
             'logo' => ["nullable"],
-            'login_background' => ["nullable"],
         ], [
             'name.required' => 'Nama Perusahaan tidak boleh kosong.',
             'name.min' => 'Nama Perusahaan minimal 2 karakter.',
@@ -51,6 +52,39 @@ class InfoPerusahaanController extends Controller
         DB::beginTransaction();
         try {
             $company->update($validated);
+            if (isset($request->login_background)) {
+                if (File::exists($company->login_background) && $company->login_background != 'img/bg-login.jpg') {
+                    File::delete($company->login_background);
+                }
+                $path = 'img/company';
+                if (!File::isDirectory($path)) {
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $namafoto = "bg-login-" . now()->format('Hisu') . '.jpg';
+                $img = Image::make($request->login_background);
+                $width = $img->width();
+                $height = $img->height();
+                $img = $img->encode('jpg', 100);
+                if ($width > $height) {
+                    if ($width > 2000) {
+                        $img->resize(2000, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                } else {
+                    if ($height > 2000) {
+                        $img->resize(null, 2000, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                }
+
+                $lokasisimpan = $path . "/" . $namafoto;
+                $img->save($lokasisimpan);
+
+                $company->login_background = $lokasisimpan;
+                $company->save();
+            }
             DB::commit();
             return response()->json([
                 'success' => true,

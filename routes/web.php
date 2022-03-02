@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 // ---------------START UMUM---------------
+// home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// artikel
+Route::get('/artikel', [HomeController::class, 'artikel'])->name('artikel');
+Route::get('/artikel-detail', [HomeController::class, 'artikelDetail'])->name('artikel.detail');
 
 // login
 Route::get('/login', [LoginController::class, 'loginTampil'])->name('login');
@@ -22,7 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', function () {
             return redirect()->route('admin.dashboard');
         });
-        Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
         // tag
         Route::resource('tag', TagController::class)->parameters([

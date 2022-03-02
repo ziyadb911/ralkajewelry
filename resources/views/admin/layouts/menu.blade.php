@@ -31,9 +31,9 @@
         </a>
     </div>
 </div>
-<a class="{{ strpos(Route::currentRouteName(), 'admin.banner') !== false ? 'active ' : '' }}item" href="#">
+{{-- <a class="{{ strpos(Route::currentRouteName(), 'admin.banner') !== false ? 'active ' : '' }}item" href="#">
     <i class='flag icon'></i>Banner
-</a>
+</a> --}}
 <a class="{{ Request::routeIs('admin.infoperusahaan') ? 'active ' : '' }}item" href="{{ route('admin.infoperusahaan') }}">
     <i class='building icon'></i>Informasi Perusahaan
 </a>

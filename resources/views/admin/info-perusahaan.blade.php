@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 
+@section('footer')
+	<script src="{{ URL::asset('vendor/compressor/compressor.min.js') }}"></script>
+@endsection
+
 @section('jsready')
 	$('#formInfoPerusahaan').form({
 		fields: {
@@ -88,6 +92,45 @@
             })
         }
     });
+
+	$('#login_background').change(function (e) {		
+		var jmlFoto = $('#imgPreview').find('.ui.image').length;
+		var inputFile = $(this)[0];
+		var files = inputFile.files;
+		if (files.length > 0) {
+			var uploadpath = inputFile.value;
+			var fileExtension = uploadpath.substring(uploadpath.lastIndexOf(".") + 1, uploadpath.length).toLowerCase();
+			if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
+				$(this).val("");
+				showMessage('error', 'Foto harus berupa file gambar (.jpg / .jpeg / .png).');
+				return;
+			}
+			if (files[0].size / 1024 / 1024 > 5) {
+				$(this).val("");
+				showMessage('error', 'File size tidak boleh melebihi 5 MB.');
+				return;
+			}
+            console.log(files.length);
+            $('#formInfoPerusahaan').addClass('loading');
+			$.each(files, function (key, val) {
+				compressImage(val).then(function (base64) {
+					var fotobaru = `<div class='ui small image rounded' >
+                        <img src="${base64}" alt="login_background">
+					</div>`;
+					$('#imgPreview').html(fotobaru);
+					$('#formInfoPerusahaan').removeClass('loading');
+				}).catch(function (err) {
+					$('#formInfoPerusahaan').removeClass('loading');
+					console.log("ErrSelesai", err.message);
+				});
+			});
+		}else{
+            var fotobaru = `<div class='ui small image rounded' >
+                Tidak ada foto
+            </div>`;
+            $('#imgPreview').html(fotobaru);
+        }
+	});
 @endsection
 
 @section('jsfunction')
@@ -101,11 +144,50 @@
 	function submitForm(){
 		$("#formInfoPerusahaan").submit();
 	}
+
+	function compressImage(file) {
+        return new Promise((resolve, reject) => {
+            new Compressor(file, {
+                quality: 0.8,
+                maxHeight: 960,
+                mimeType: 'jpeg',
+                type: File,
+                success(result) {
+                    fileToBase64Promise(result).then(function (base64) {
+                        console.log('selesai base64', base64);
+                        resolve(base64);
+                    }).catch(function (error) {
+                        reject(error);
+                    });
+                },
+                error(err) {
+                    reject(err);
+                    console.log("error", err.message);
+                },
+            });
+        });
+    }
+
+    const fileToBase64Promise = (inputFile) => {
+        const temporaryFileReader = new FileReader();
+
+        return new Promise((resolve, reject) => {
+            temporaryFileReader.onerror = () => {
+                temporaryFileReader.abort();
+                reject(new DOMException("Problem parsing input file."));
+            };
+
+            temporaryFileReader.onloadend = () => {
+                resolve(temporaryFileReader.result);
+            };
+            temporaryFileReader.readAsDataURL(inputFile);
+        });
+    };
 @endsection
 
 @section('content')
 	<h2 class='ui dividing header'><i class='building small icon'></i>Informasi Perusahaan</h2>
-	<form class="ui form" action="{{ route('admin.infoperusahaan.post') }}" method="POST" id='formInfoPerusahaan'>
+	<form class="ui form" enctype="multipart/form-data" action="{{ route('admin.infoperusahaan.post') }}" method="POST" id='formInfoPerusahaan'>
 		@csrf
 		<div class='ui error message'></div>
 		<div class='ui grid'>
@@ -156,6 +238,25 @@
 					<div class="field">
 						<label>Twitter</label>
 						<input type='text' name='twitter' id='twitter' placeholder="Twitter" autocomplete="off" value="{{ $company->twitter ?? '' }}">
+					</div>
+				</div>
+				<div class="ui segment">
+						<div class='sixteen wide field'>
+							<label>{{isset($company) ? 'Ganti' : ''}} Background Login <span style="font-size: 8pt; font-weight: normal;">(Maks. 5MB)</span></label>
+							<input type='file' class='ui button' name='login_background' id='login_background' accept='.png, .jpg, .jpeg'>
+						</div>
+					<div class='ui small images' id='imgPreview'>
+						@if(isset($company))
+							@if(isset($company->login_background))
+								<div class='ui small image rounded'>
+									<img src="{{ URL::asset($company->login_background) }}" alt="{{ $company->login_background }}">
+								</div>
+							@else
+								<div class='ui small image rounded'>
+									Tidak ada gambar
+								</div>
+							@endif
+						@endif
 					</div>
 				</div>
 			</div>
