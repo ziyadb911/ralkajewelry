@@ -3,11 +3,11 @@
     <div class="footer-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="footer-content">
                         <div class="footer-head">
                             <div class="footer-logo">
-                                <h2><span>e</span>Business</h2>
+                                <h2><span>Ralka</span>Jewelry</h2>
                             </div>
 
                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <!-- end single footer -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="footer-content">
                         <div class="footer-head">
                             <h4>information</h4>
@@ -48,21 +48,6 @@
                     </div>
                 </div>
                 <!-- end single footer -->
-                <div class="col-md-4">
-                    <div class="footer-content">
-                        <div class="footer-head">
-                            <h4>Instagram</h4>
-                            <div class="flicker-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/1.jpg') }}" alt=""></a>
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/2.jpg') }}" alt=""></a>
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/3.jpg') }}" alt=""></a>
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/4.jpg') }}" alt=""></a>
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/5.jpg') }}" alt=""></a>
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/6.jpg') }}" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

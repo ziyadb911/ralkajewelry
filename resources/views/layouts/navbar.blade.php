@@ -11,13 +11,11 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto{{ Request::routeIs('home') ? ' active ' : '' }}" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
                 <li><a class="{{ Request::routeIs('artikel*') ? 'active ' : '' }}"href="{{ route('artikel') }}">Artikel</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
+                <li><a class="nav-link scrollto" href="#portfolio">Galeri</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Hubungi Kami</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
