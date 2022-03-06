@@ -63,40 +63,48 @@ class CustomerResponseController extends Controller
 
     public function show(CustomerResponse $customerResponse)
     {
-        $this->read($customerResponse);
+        $customerResponse->update(['is_readed' => 1]);
         $data = [
             'customerResponse' => $customerResponse
         ];
         return view('admin.respon-customer.lihat', $data);
     }
 
-    private function read(CustomerResponse $customerResponse)
+    public function read(CustomerResponse $customerResponse)
     {
         DB::beginTransaction();
         try {
             $customerResponse->update(['is_readed' => 1]);
             DB::commit();
+            return response()->json([
+                'success' => true,
+                'message' => "Status respon customer berhasil diganti",
+            ], 200);
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->back()
-                ->withErrors([
-                    'mess' => $e->getMessage()
-                ]);
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
         }
     }
 
-    private function unread(CustomerResponse $customerResponse)
+    public function unread(CustomerResponse $customerResponse)
     {
         DB::beginTransaction();
         try {
             $customerResponse->update(['is_readed' => 0]);
             DB::commit();
+            return response()->json([
+                'success' => true,
+                'message' => "Status respon customer berhasil diganti",
+            ], 200);
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->back()
-                ->withErrors([
-                    'mess' => $e->getMessage()
-                ]);
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
         }
     }
 

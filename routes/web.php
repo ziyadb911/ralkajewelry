@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
 
         // respon customer
+        Route::post('respon-customer/read/{customerResponse}', [CustomerResponseController::class, 'read'])->name('admin.responcustomer.read');
+        Route::post('respon-customer/unread/{customerResponse}', [CustomerResponseController::class, 'unread'])->name('admin.responcustomer.unread');
         Route::resource('respon-customer', CustomerResponseController::class)->except(['create', 'edit ', 'update'])->parameters([
             'respon-customer' => 'customerResponse'
         ])->names([

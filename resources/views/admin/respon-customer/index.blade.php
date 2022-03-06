@@ -46,6 +46,18 @@
         $("#formHapus").attr('action', route);
         $("#modalHapus").modal("show");
     }
+
+    function switchReadStatus(route){
+        $("#formSwitchReadStatus").attr('action', route);
+        $('.dimmerloading').dimmer('show');
+
+        ajaxPost($("#formSwitchReadStatus")).done(function(data){
+            $('.dimmerloading').dimmer('hide');
+            showMessage("info", data.message, "{!! Request::fullUrl() !!}");
+        }).fail(function(data){
+            $('.dimmerloading').dimmer('hide');
+        })
+    }
 @endsection
 
 @section('content')
@@ -123,9 +135,17 @@
                             <a class='ui small blue icon button popuphover' href="{{ route('admin.responcustomer.lihat', ['customerResponse' => $data]) }}" data-content="Detail">
                                 <i class="info icon"></i>
                             </a>
-                            <a class='ui small red icon button popuphover' onclick="showModalHapus({{ $data->id }}, '{{ $data->name }}', '{{ route('admin.responcustomer.hapus', ['customerResponse' => $data]) }}')" data-content="Hapus">
-                                <i class='trash icon'></i>
-                            </a>
+                            <div class="ui icon top left pointing dropdown button actionbutton popuphover">
+                                <i class="settings icon"></i>
+                                <div class="menu">
+                                    <a class='item' onclick="switchReadStatus('{{ route('admin.responcustomer.' . ($data->is_readed ? 'unread' : 'read'), ['customerResponse' => $data]) }}')">
+                                        <i class="eye{{ $data->is_readed ? ' slash' : ''}} icon"></i>{{ $data->is_readed ? 'Tandai Belum Dibaca' : 'Tandai Sudah Dibaca'}}
+                                    </a>
+                                    <a class='item' onclick="showModalHapus({{ $data->id }}, '{{ $data->name }}', '{{ route('admin.responcustomer.hapus', ['customerResponse' => $data]) }}')">
+                                        <i class='trash red icon'></i>Hapus
+                                    </a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -173,5 +193,11 @@
                 Ya
             </button>
         </div>
+    </div>
+
+    <div id='divSwitchReadStatus'>
+        <form style="display:none" id="formSwitchReadStatus" action="" method="POST">
+            @csrf
+        </form>
     </div>
 @endsection
