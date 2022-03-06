@@ -168,7 +168,7 @@
                                 @endforeach
                             @endif
                         </td>
-                        <td>{{ $data->created_at_date ?? '' }}</td>
+                        <td>{{ $data->date_formatted ?? '' }}</td>
                         <td>
                             <div class="ui {{ $data->is_shown == 1 ? 'teal' : 'red' }} horizontal label">
                                 {{ $data->is_shown == 1 ? 'PUBLISH' : 'HIDDEN' }}

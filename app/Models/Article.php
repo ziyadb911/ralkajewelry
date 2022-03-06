@@ -16,6 +16,7 @@ class Article extends Model
         'slug',
         'title',
         'content',
+        'date',
         'image_url',
         'is_shown',
         'created_by',
@@ -48,9 +49,9 @@ class Article extends Model
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
-    public function getCreatedAtDateAttribute()
+    public function getDateFormattedAttribute()
     {
-        return isset($this->created_at) ? DateHelper::dateToString($this->created_at) : null;
+        return isset($this->date) ? DateHelper::dateToString($this->date) : null;
     }
 
     public function getCreatedAtFormattedAttribute()

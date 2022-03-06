@@ -18,8 +18,8 @@ class ArticleController extends Controller
     {
         $title = $request->judul;
         $article_category_id = $request->kategori;
-        $created_at_min = $request->tglmin;
-        $created_at_max = $request->tglmaks;
+        $date_min = $request->tglmin;
+        $date_max = $request->tglmaks;
         $is_shown = $request->status;
         $tags = $request->tag;
         $articles = Article::with(['articleCategory', 'tags'])
@@ -33,14 +33,14 @@ class ArticleController extends Controller
                         return $q->whereIn('id', array_values($tags));
                     });
                 });
-            })->when(isset($created_at_min), function ($q) use ($created_at_min) {
-                $q->whereDate('created_at', '>=', $created_at_min);
-            })->when(isset($created_at_max), function ($q) use ($created_at_max) {
-                $q->whereDate('created_at', '<=', $created_at_max);
+            })->when(isset($date_min), function ($q) use ($date_min) {
+                $q->whereDate('date', '>=', $date_min);
+            })->when(isset($date_max), function ($q) use ($date_max) {
+                $q->whereDate('date', '<=', $date_max);
             })->when(isset($is_shown), function ($q) use ($is_shown) {
                 $q->where('is_shown', $is_shown);
             })
-            ->orderBy("created_at", "DESC")->paginate($this->paginate);
+            ->orderBy("date", "DESC")->orderBy("created_at", "DESC")->paginate($this->paginate);
         $articleCategories = ArticleCategory::orderBy("name", "ASC")->get();
         $tags = Tag::orderBy("name", "ASC")->get();
         $data = array(
@@ -66,6 +66,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'title' => ["required", "max:200"],
+            'date' => ["required"],
             'article_category_id' => ["required", "exists:article_categories,id"],
             'content' => ["required"],
             'tags' => ["nullable", "array"],
@@ -73,6 +74,7 @@ class ArticleController extends Controller
         ], [
             'title.required' => 'Judul tidak boleh kosong.',
             'title.max' => 'Judul maksimal 200 karakter.',
+            'date.required' => 'Tanggal tidak boleh kosong.',
             'article_category_id.required' => 'Kategori tidak boleh kosong.',
             'article_category_id.exists' => 'Kategori tidak tersedia.',
             'content.required' => 'Isi tidak boleh kosong.',
@@ -162,6 +164,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'title' => ["required", "max:200"],
+            'date' => ["required"],
             'article_category_id' => ["required", "exists:article_categories,id"],
             'content' => ["required"],
             'tags' => ["nullable", "array"],
@@ -169,6 +172,7 @@ class ArticleController extends Controller
         ], [
             'title.required' => 'Judul tidak boleh kosong.',
             'title.max' => 'Judul maksimal 200 karakter.',
+            'date.required' => 'Tanggal tidak boleh kosong.',
             'article_category_id.required' => 'Kategori tidak boleh kosong.',
             'article_category_id.exists' => 'Kategori tidak tersedia.',
             'content.required' => 'Isi tidak boleh kosong.',

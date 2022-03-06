@@ -24,6 +24,13 @@
                     prompt: 'Judul maksimal 200 karakter.'
                 }]
             },
+            date: {
+                identifier: 'date',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Tanggal tidak boleh kosong.'
+                }]
+            },
             article_category_id: {
                 identifier: 'article_category_id',
                 rules: [{
@@ -46,9 +53,20 @@
         }
     });
 
+    $('#dtpDate').calendar({
+        monthFirst: false,
+        type: 'date',
+        formatter: { date: dateformat },
+        onChange: function (date, text) {
+            var dt = formatDateValue(date);
+            $('#date').val(dt);
+        }
+    });
+
     $('#formData').submit(function (e) {
         e.preventDefault();
         if ($('#formData').form('is valid')){
+            $('#date').val(formatDateValue($('#dtpDate').calendar('get date')));
             var frm = $(this);
             frm.addClass('loading');
             ajaxPost(this).done(function (data) {
@@ -169,6 +187,18 @@
             <div class='ten wide required field'>
                 <label>Judul</label>
                 <input type='text' name='title' id='title' placeholder='Judul' autocomplete="off" value="{{ $article->title ?? '' }}">
+            </div>
+        </div>
+        <div class="fields">
+            <div class='four wide required field'>
+                <label>Tanggal</label>
+                <div class='ui calendar' id='dtpDate'>
+                    <div class='ui input right icon'>
+                        <input type='text' placeholder='Tanggal' autocomplete="off" value="{{ $article->date ?? today() }}">
+                        <i class='calendar icon'></i>
+                    </div>
+                </div>
+                <input type='hidden' name="date" id="date" value="{{ $article->date ?? today() }}"/>
             </div>
         </div>
         <div class='fields'>

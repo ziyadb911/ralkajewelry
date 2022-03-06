@@ -74,10 +74,9 @@
                         errmsg = "Timeout saat mengirimkan data";
                     } else {
                         if (data.responseJSON.errors != null) {
-                            if (data.responseJSON.errors.length > 0) {
-                                var errors = data.responseJSON.errors;
-
-                                $.each(errors, function(key, val) {
+                            var errors = data.responseJSON.errors;
+                            if(Object.keys(errors).length>0){
+                                $.each(errors,function(key,val){
                                     errmsg += val[0] + '<br/>';
                                 })
                             }

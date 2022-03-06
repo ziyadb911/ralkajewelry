@@ -127,7 +127,9 @@ class DateHelper
 
     public static function dateTimeToString($date)
     {
-        return Carbon::parse($date)->format('d/m/Y H:i:s');
+        $tanggal = Carbon::parse($date)->format('d/m/Y');
+        $pukul = Carbon::parse($date)->format('H:i');
+        return "$tanggal Jam $pukul";
     }
 
     public static function stringToDateTime($string)

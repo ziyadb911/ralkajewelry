@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('slug');
             $table->string('title', 200);
             $table->text('content');
+            $table->dateTime('date')->useCurrent();
             $table->string('image_url', 200)->nullable();
             $table->boolean('is_shown')->default('1');
 
