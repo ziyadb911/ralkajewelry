@@ -69,6 +69,16 @@ Route::group(['middleware' => ['auth']], function () {
             'destroy' => 'admin.artikel.hapus',
         ]);
 
+        // respon customer
+        Route::resource('respon-customer', CustomerResponseController::class)->except(['create', 'edit ', 'update'])->parameters([
+            'respon-customer' => 'customerResponse'
+        ])->names([
+            'index' => 'admin.responcustomer',
+            'show' => 'admin.responcustomer.lihat',
+            'store' => 'admin.responcustomer.tambah.post',
+            'destroy' => 'admin.responcustomer.hapus',
+        ]);
+
         // informasi perusahaan
         Route::get('/informasi-perusahaan', [InfoPerusahaanController::class, 'infoPerusahaanTampil'])->name('admin.infoperusahaan');
         Route::post('/informasi-perusahaan', [InfoPerusahaanController::class, 'ubahInfoPerusahaan'])->name('admin.infoperusahaan.post');
