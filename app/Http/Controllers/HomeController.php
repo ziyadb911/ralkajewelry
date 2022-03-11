@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\CompanyInfo;
+use App\Models\CustomerResponse;
 use App\Models\Tag;
+use DB;
+use Exception;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -45,5 +48,27 @@ class HomeController extends Controller
             'recentArticles' => $recentArticles,
         ];
         return view('artikel-detail', $data);
+    }
+
+    public function contact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ["required"],
+            'phone' => ["required"],
+            'email' => ["nullable"],
+            'message' => ["nullable"],
+        ], [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'phone.required' => 'No. Handphone tidak boleh kosong.',
+        ]);
+        DB::beginTransaction();
+        try {
+            $article = CustomerResponse::create($validated);
+            DB::commit();
+            return response('OK', 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            return response('Terjadi kesalahan saat mengirim data, silahkan coba lagi', 500);
+        }
     }
 }

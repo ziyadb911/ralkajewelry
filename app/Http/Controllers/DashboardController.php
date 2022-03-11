@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompanyInfo;
 use App\Models\CustomerResponse;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {

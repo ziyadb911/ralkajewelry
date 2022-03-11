@@ -19,36 +19,30 @@
 
                 <div class="carousel-inner" role="listbox">
 
-                    <div class="carousel-item active" style="background-image: url({{ URL::asset('/img/hero-carousel/1') }}.jpg)">
+                    <div class="carousel-item active" style="background-image: url({{ URL::asset('/img/bg-login') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">The Best Business Information </h2>
-                                <p class="animate__animated animate__fadeInUp">We're In The Business Of Helping You
-                                    Start Your Business</p>
-                                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get
-                                    Started</a>
+                                <h2 class="animate__animated animate__fadeInDown">We build trust with you</h2>
+                                <p class="animate__animated animate__fadeInUp" style="font">Quality is what we focused on</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/2') }}.jpg)">
+                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/bg-login') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
-                                <p class="animate__animated animate__fadeInUp">Helping Business Security & Peace of Mind
-                                    for Your Family</p>
-                                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get
-                                    Started</a>
+                                <h2 class="animate__animated animate__fadeInDown">No fake diamonds here</h2>
+                                <p class="animate__animated animate__fadeInUp">Purity is our main purpose</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/3') }}.jpg)">
+                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/bg-login') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
-                                <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo
-                                    enim ipsam voluptatem</p>
+                                <h2 class="animate__animated animate__fadeInDown">Apreciate yourself</h2>
+                                <p class="animate__animated animate__fadeInUp">You will never find diamonds that are perfect.
+                                    But you always find diamonds that are perfectly yours</p>
                                 <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get
                                     Started</a>
                             </div>
@@ -614,8 +608,8 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
                         <div class="suscribe-text text-center">
-                            <h3>Baca Semua Artikel</h3>
-                            <a class="sus-btn" href="#">Artikel</a>
+                            <h3>Artikel Lebih Lengkap</h3>
+                            <a class="sus-btn" href="{{ route('artikel') }}">Baca Semua</a>
                         </div>
                     </div>
                 </div>
@@ -683,22 +677,21 @@
                         <!-- Start  contact -->
                         <div class="col-md-6">
                             <div class="form contact-form">
-                                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                                <form action="{{ route('kontak') }}" method="post" role="form" class="php-email-form">
+                                    @csrf
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control" id="name"
                                             placeholder="Nama" required>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <input type="text" class="form-control" name="subject" id="subject"
+                                        <input type="text" class="form-control" name="phone" id="subject"
                                             placeholder="No. Handhpone" required>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Email" required>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <textarea class="form-control" name="message" rows="5" placeholder="Pesan"
-                                            required></textarea>
+                                        <textarea class="form-control" name="message" rows="5" placeholder="Pesan"></textarea>
                                     </div>
                                     <div class="my-3">
                                         <div class="loading">Loading</div>

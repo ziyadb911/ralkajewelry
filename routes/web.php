@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 // ---------------START UMUM---------------
 // home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/kontak', [HomeController::class, 'contact'])->name('kontak');
 
 // artikel
 Route::get('/artikel', [HomeController::class, 'artikel'])->name('artikel');
