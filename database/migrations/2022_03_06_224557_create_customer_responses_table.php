@@ -17,8 +17,8 @@ class CreateCustomerResponsesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->string('email');
-            $table->text('message');
+            $table->string('email')->nullable();
+            $table->text('message')->nullable();
             $table->boolean('is_readed')->default('0');
 
             //USER, TIMESTAMP

@@ -63,12 +63,12 @@ class HomeController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            $article = CustomerResponse::create($validated);
+            CustomerResponse::create($validated);
             DB::commit();
             return response('OK', 200);
         } catch (Exception $e) {
             DB::rollback();
-            return response('Terjadi kesalahan saat mengirim data, silahkan coba lagi', 500);
+            return response($e->getMessage(), 500);
         }
     }
 }

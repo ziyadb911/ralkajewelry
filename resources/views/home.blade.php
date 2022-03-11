@@ -684,7 +684,7 @@
                                             placeholder="Nama" required>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <input type="text" class="form-control" name="phone" id="subject"
+                                        <input type="text" class="form-control" name="phone" id="phone"
                                             placeholder="No. Handhpone" required>
                                     </div>
                                     <div class="form-group mt-3">
