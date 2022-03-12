@@ -41,7 +41,7 @@ class HomeController extends Controller
             $q->whereHas('tags', function ($q) use ($tagId) {
                 $q->where('id', $tagId);
             });
-        })->where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->get();
+        })->where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->get(); // belum paginate..
 
         $data = [
             'company' => $company,
@@ -59,7 +59,7 @@ class HomeController extends Controller
             abort(404);
         }
         $company = CompanyInfo::findOrFail(1);
-        $recentArticles = Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit(4)->get();
+        $recentArticles = Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit(3)->get();
         $data = [
             'company' => $company,
             'recentArticles' => $recentArticles,

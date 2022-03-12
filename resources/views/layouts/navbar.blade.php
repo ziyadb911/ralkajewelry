@@ -10,12 +10,12 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto{{ Request::routeIs('home') ? ' active ' : '' }}" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-                <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
-                <li><a class="nav-link scrollto" href="#portfolio">Galeri</a></li>
-                <li><a class="nav-link scrollto" href="#blog">Artikel</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Hubungi Kami</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#about">Tentang Kami</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#services">Layanan</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#portfolio">Galeri</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#blog">Artikel</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#contact">Hubungi Kami</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
