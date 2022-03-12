@@ -495,109 +495,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- Start Left Blog -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="single-blog">
-                                <div class="single-blog-img">
-                                    <a href="blog.html">
-                                        <img src="{{ URL::asset('img/blog/1.jpg') }}" alt="">
-                                    </a>
+                    @if(count($recentArticles) > 0)
+                        <div class="row">
+                            <!-- Start Blog -->
+                            @foreach($recentArticles as $recentArticle)
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="single-blog">
+                                        <div class="single-blog-img">
+                                            <a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">
+                                                <img src="{{ $recentArticle->image_url }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="blog-meta">
+                                            <span class="date-type">
+                                                <i class="bi bi-clock"></i>{{ $recentArticle->date_indo }}
+                                            </span>
+                                            <span class="date-type">
+                                                <i class="bi bi-folder"></i>{{ $recentArticle->articleCategory->name ?? '' }}
+                                            </span>
+                                        </div>
+                                        <div class="blog-text">
+                                            <h4>
+                                                <a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">{{ $recentArticle->title }}</a>
+                                            </h4>
+                                            {!! (strlen($recentArticle->content) > 200) ? (substr($recentArticle->content, 0, 200) . '...') : $recentArticle->content !!}
+                                        </div>
+                                        <span>
+                                            <a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}" class="ready-btn">Baca Selengkapnya</a>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="blog-meta">
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        <a href="#">13 comments</a>
-                                    </span>
-                                    <span class="date-type">
-                                        <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                                    </span>
-                                </div>
-                                <div class="blog-text">
-                                    <h4>
-                                        <a href="blog.html">Assumenda repud eum veniam</a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio
-                                        modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda
-                                        repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                                    </p>
-                                </div>
-                                <span>
-                                    <a href="blog.html" class="ready-btn">Read more</a>
-                                </span>
-                            </div>
-                            <!-- Start single blog -->
+                            @endforeach
+                            <!-- End Blog-->
                         </div>
-                        <!-- End Left Blog-->
-                        <!-- Start Left Blog -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="single-blog">
-                                <div class="single-blog-img">
-                                    <a href="blog.html">
-                                        <img src="{{ URL::asset('img/blog/2.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog-meta">
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        <a href="#">130 comments</a>
-                                    </span>
-                                    <span class="date-type">
-                                        <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                                    </span>
-                                </div>
-                                <div class="blog-text">
-                                    <h4>
-                                        <a href="blog.html">Explicabo magnam quibusdam.</a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio
-                                        modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda
-                                        repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                                    </p>
-                                </div>
-                                <span>
-                                    <a href="blog.html" class="ready-btn">Read more</a>
-                                </span>
-                            </div>
-                            <!-- Start single blog -->
-                        </div>
-                        <!-- End Left Blog-->
-                        <!-- Start Right Blog-->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="single-blog">
-                                <div class="single-blog-img">
-                                    <a href="blog.html">
-                                        <img src="{{ URL::asset('img/blog/3.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog-meta">
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        <a href="#">10 comments</a>
-                                    </span>
-                                    <span class="date-type">
-                                        <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                                    </span>
-                                </div>
-                                <div class="blog-text">
-                                    <h4>
-                                        <a href="blog.html">Lorem ipsum dolor sit amet</a>
-                                    </h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio
-                                        modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda
-                                        repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                                    </p>
-                                </div>
-                                <span>
-                                    <a href="blog.html" class="ready-btn">Read more</a>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- End Right Blog-->
-                    </div>
+                    @endif
                 </div>
             </div>
         </div><!-- End Blog Section -->
@@ -640,10 +571,7 @@
                                     <div class="contact-icon text-center">
                                         <div class="single-icon">
                                             <i class="bi bi-phone"></i>
-                                            <p>
-                                                Hubungi: {{ $company->phone1 ?? '' }}<br>
-                                                {{-- <span>Monday-Friday (9am-5pm)</span> --}}
-                                            </p>
+                                            <p>Hubungi: {{ $company->phone1 ?? '' }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -652,10 +580,7 @@
                                     <div class="contact-icon text-center">
                                         <div class="single-icon">
                                             <i class="bi bi-envelope"></i>
-                                            <p>
-                                                Email: {{ $company->email ?? '' }}
-                                                {{-- <span>Web: {{ $company->url ?? '' }}</span> --}}
-                                            </p>
+                                            <p>Email: {{ $company->email ?? '' }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -664,9 +589,7 @@
                                     <div class="contact-icon text-center">
                                         <div class="single-icon">
                                             <i class="bi bi-geo-alt"></i>
-                                            <p>
-                                                Alamat: {!! nl2br($company->address ?? '') !!}
-                                            </p>
+                                            <p>Alamat: {!! nl2br($company->address ?? '') !!}</p>
                                         </div>
                                     </div>
                                 </div>

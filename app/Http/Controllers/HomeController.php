@@ -16,8 +16,10 @@ class HomeController extends Controller
     public function index()
     {
         $company = CompanyInfo::findOrFail(1);
+        $recentArticles = self::getRecentArticles(3);
         $data = [
             'company' => $company,
+            'recentArticles' => $recentArticles,
         ];
         return view('home', $data);
     }
@@ -30,7 +32,7 @@ class HomeController extends Controller
         $company = CompanyInfo::findOrFail(1);
         $articleCategories = ArticleCategory::orderBy("name", "ASC")->get();
         $tags = Tag::orderBy("name", "ASC")->get();
-        $recentArticles = Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit(3)->get();
+        $recentArticles = self::getRecentArticles(3);
 
         // list artikel yg tampil dan di filter
         $articles = Article::when(isset($cari), function ($q) use ($cari) {
@@ -55,17 +57,22 @@ class HomeController extends Controller
 
     public function artikelDetail(Request $request, Article $article)
     {
-        if(!$article->is_shown){
+        if (!$article->is_shown) {
             abort(404);
         }
         $company = CompanyInfo::findOrFail(1);
-        $recentArticles = Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit(3)->get();
+        $recentArticles = self::getRecentArticles(3);
         $data = [
             'company' => $company,
             'recentArticles' => $recentArticles,
             'article' => $article,
         ];
         return view('artikel-detail', $data);
+    }
+
+    private function getRecentArticles(int $limit = 3)
+    {
+        return Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit($limit)->get();
     }
 
     public function contact(Request $request)
