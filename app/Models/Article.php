@@ -53,6 +53,11 @@ class Article extends Model
     {
         return isset($this->date) ? DateHelper::dateToString($this->date) : null;
     }
+    
+    public function getDateIndoAttribute()
+    {
+        return isset($this->date) ? DateHelper::dateToStringIndonesia($this->date) : null;
+    }
 
     public function getCreatedAtFormattedAttribute()
     {

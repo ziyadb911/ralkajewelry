@@ -10,8 +10,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/kontak', [HomeController::class, 'contact'])->name('kontak');
 
 // artikel
-Route::get('/artikel', [HomeController::class, 'artikel'])->name('artikel');
-Route::get('/artikel-detail', [HomeController::class, 'artikelDetail'])->name('artikel.detail');
+Route::prefix('/artikel')->group(function () {
+    Route::get('/', [HomeController::class, 'artikel'])->name('artikel');
+    Route::get('/{article:slug}', [HomeController::class, 'artikelDetail'])->name('artikel.detail');
+});
 
 // login
 Route::get('/login', [LoginController::class, 'loginTampil'])->name('login');

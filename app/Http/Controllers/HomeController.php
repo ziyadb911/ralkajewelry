@@ -24,28 +24,46 @@ class HomeController extends Controller
 
     public function artikel(Request $request)
     {
+        $cari = $request->cari;
+        $kategoriId = $request->kategori;
+        $tagId = $request->tag;
         $company = CompanyInfo::findOrFail(1);
         $articleCategories = ArticleCategory::orderBy("name", "ASC")->get();
         $tags = Tag::orderBy("name", "ASC")->get();
-        $articles = Article::where("is_shown", true)->orderBy("created_at", "DESC")->get();
-        $recentArticles = Article::where("is_shown", true)->orderBy("created_at", "DESC")->limit(4)->get();
+        $recentArticles = Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit(3)->get();
+
+        // list artikel yg tampil dan di filter
+        $articles = Article::when(isset($cari), function ($q) use ($cari) {
+            $q->where('title', 'LIKE', "%$cari%");
+        })->when(isset($kategoriId), function ($q) use ($kategoriId) {
+            $q->where('article_category_id', $kategoriId);
+        })->when(isset($tagId), function ($q) use ($tagId) {
+            $q->whereHas('tags', function ($q) use ($tagId) {
+                $q->where('id', $tagId);
+            });
+        })->where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->get();
+
         $data = [
             'company' => $company,
+            'recentArticles' => $recentArticles,
             'articleCategories' => $articleCategories,
             'tags' => $tags,
             'articles' => $articles,
-            'recentArticles' => $recentArticles,
         ];
         return view('artikel', $data);
     }
 
-    public function artikelDetail(Request $request)
+    public function artikelDetail(Request $request, Article $article)
     {
+        if(!$article->is_shown){
+            abort(404);
+        }
         $company = CompanyInfo::findOrFail(1);
-        $recentArticles = Article::where("is_shown", true)->orderBy("created_at", "DESC")->limit(4)->get();
+        $recentArticles = Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit(4)->get();
         $data = [
             'company' => $company,
             'recentArticles' => $recentArticles,
+            'article' => $article,
         ];
         return view('artikel-detail', $data);
     }

@@ -4,6 +4,14 @@
 @endsection
 
 @section('jsready')
+  $('#formCari').submit(function (e) {
+    $('#formCari').find('input').each(function() {
+        var input = $(this);
+        if (!input.val() || input.val() == "") {
+            input.prop('disabled', true);
+        }
+    });
+  });
 @endsection
 
 @section('jsfunction')
@@ -20,10 +28,10 @@
             <div class="slider-content text-center">
               <div class="header-bottom">
                 <div class="layer2">
-                  <h1 class="title2">My Blog</h1>
+                  <h1 class="title2">Artikel</h1>
                 </div>
                 <div class="layer3">
-                  <h2 class="title3">Profesional Blog Page</h2>
+                  <h2 class="title3">Baca Kumpulan Artikel Menarik Disini</h2>
                 </div>
               </div>
             </div>
@@ -40,9 +48,9 @@
             <div class="page-head-blog">
               <div class="single-blog-page">
                 <!-- search option start -->
-                <form action="#">
+                <form method='GET' action="" id="formCari">
                   <div class="search-option">
-                    <input type="text" placeholder="Search...">
+                    <input type="text" name="cari" id="cari" placeholder="Cari..." value="{{ request()->get('cari') ?? '' }}">
                     <button class="button" type="submit">
                       <i class="bi bi-search"></i>
                     </button>
@@ -56,16 +64,16 @@
                   <div class="left-blog">
                     <h4>Artikel Terbaru</h4>
                     <div class="recent-post">
-                      @foreach ($recentArticles as $article)
+                      @foreach ($recentArticles as $recentArticle)
                         <!-- start single post -->
                         <div class="recent-single-post">
                           <div class="post-img">
-                            <a href="#">
-                              <img src="{{ URL::asset($article->image_url ?? 'img/image-default.jpg') }}" alt="{{ $article->title }}">
+                            <a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">
+                              <img src="{{ URL::asset($recentArticle->image_url ?? 'img/image-default.jpg') }}" alt="{{ $recentArticle->title }}">
                             </a>
                           </div>
                           <div class="pst-content">
-                            <p><a href="#">{{ $article->title }}</a></p>
+                            <p><a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">{{ $recentArticle->title }}</a></p>
                           </div>
                         </div>
                         <!-- End single post -->    
@@ -82,7 +90,7 @@
                     <ul>
                       @foreach ($articleCategories as $articleCategory)
                         <li>
-                          <a href="#">{{ $articleCategory->name ?? '' }}</a>
+                          <a href="{{ route('artikel', ['kategori' => $articleCategory]) }}">{{ $articleCategory->name ?? '' }}</a>
                         </li>
                       @endforeach
                     </ul>
@@ -97,7 +105,7 @@
                       <ul>
                         @foreach ($tags as $tag)
                           <li>
-                            <a href="#">{{ $tag->name ?? '' }}</a>
+                            <a href="{{ route('artikel', ['tag' => $tag]) }}">{{ $tag->name ?? '' }}</a>
                           </li>
                         @endforeach
                       </ul>
@@ -109,6 +117,21 @@
           </div>
           <!-- End left sidebar -->
           <div class="col-md-8 col-sm-8 col-xs-12">
+            @if(request()->hasAny(['cari', 'kategori', 'tag']))
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h6>
+                    @if(request()->has('cari'))
+                      Artikel dengan Pencarian '{{ request()->get('cari') }}'
+                    @elseif(request()->has('kategori'))
+                      Artikel dengan Kategori '{{ count($articleCategories) > 0 ? ($articleCategories->firstWhere('id', request()->get('kategori'))->name ?? '') : '' }}'
+                    @elseif(request()->has('tag'))
+                      Artikel dengan Tag '{{ count($tags) > 0 ? ($tags->firstWhere('id', request()->get('tag'))->name ?? '') : '' }}'
+                    @endif
+                  </h6>
+                </div>
+              </div>
+            @endif
             <div class="row">
               @if (count($articles) > 0)
                 @foreach ($articles as $article)
@@ -116,44 +139,60 @@
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="single-blog">
                       <div class="single-blog-img">
-                        <a href="blog-details.html">
+                        <a href="{{ route('artikel.detail', ['article' => $article]) }}">
                           <img src="{{ $article->image_url }}" alt="">
                         </a>
                       </div>
                       <div class="blog-meta">
                         <span class="date-type">
-                          <i class="bi bi-calendar"></i>28 Maret 2018
+                          <i class="bi bi-clock"></i>{{ $article->date_indo }}
                         </span>
                         <span class="date-type">
                           <i class="bi bi-folder"></i>{{ $article->articleCategory->name ?? '' }}
                         </span>
-                        <span class="date-type">
-                          <i class="bi bi-tags"></i>{{ $article->articleCategory->name ?? '' }}
-                        </span>
+                        @if(isset($article->tags) && count($article->tags) > 0)
+                          <span class="date-type">
+                            <i class="bi bi-tags"></i>{{ implode(', ',$article->tags->pluck('name')->toArray()) ?? '' }}
+                          </span>
+                        @endif
                       </div>
                       <div class="blog-text">
                         <h4>
-                          <a href="#">{{ $article->title ?? '' }}</a>
+                          <a href="{{ route('artikel.detail', ['article' => $article]) }}">{{ $article->title ?? '' }}</a>
                         </h4>
-                        {!! $article->content ?? '' !!}
+                        {!! (strlen($article->content) > 250) ? (substr($article->content, 0, 250) . '...') : $article->content !!}
                       </div>
                       <span>
-                        <a href="blog-details.html" class="ready-btn">Read more</a>
+                        <a href="{{ route('artikel.detail', ['article' => $article]) }}" class="ready-btn">Baca Selengkapnya</a>
                       </span>
                     </div>
                   </div>
                   <!-- End single blog -->
-                @endforeach
+                  @endforeach
+                  <div class="blog-pagination">
+                    <ul class="pagination">
+                      <li class="page-item"><a href="#" class="page-link">&lt;</a></li>
+                      <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                      <li class="page-item"><a href="#" class="page-link">2</a></li>
+                      <li class="page-item"><a href="#" class="page-link">3</a></li>
+                      <li class="page-item"><a href="#" class="page-link">&gt;</a></li>
+                    </ul>
+                  </div>
+              @else
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h5>
+                    @if(request()->has('cari'))
+                      Tidak ditemukan artikel dengan pencarian tersebut
+                    @elseif(request()->has('kategori'))
+                      Tidak ditemukan artikel dengan kategori tersebut
+                    @elseif(request()->has('tag'))
+                      Tidak ditemukan artikel dengan tag tersebut
+                    @else
+                      Tidak ada artikel yang terdaftar
+                    @endif
+                  </h5>
+                </div>
               @endif
-              <div class="blog-pagination">
-                <ul class="pagination">
-                  <li class="page-item"><a href="#" class="page-link">&lt;</a></li>
-                  <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                  <li class="page-item"><a href="#" class="page-link">2</a></li>
-                  <li class="page-item"><a href="#" class="page-link">3</a></li>
-                  <li class="page-item"><a href="#" class="page-link">&gt;</a></li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
