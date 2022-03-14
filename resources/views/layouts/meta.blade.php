@@ -11,7 +11,7 @@
 
 <!-- Google Fonts -->
 <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+    href="https://fonts.googleapis.com/css?family=Roboto+Serif:300,400,400i,600,700|Alegreya:300,400,400i,500,500i,700,800,900"
     rel="stylesheet">
 
 <!-- Vendor CSS Files -->

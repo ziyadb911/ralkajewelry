@@ -140,7 +140,7 @@
                     <div class="single-blog">
                       <div class="single-blog-img">
                         <a href="{{ route('artikel.detail', ['article' => $article]) }}">
-                          <img src="{{ $article->image_url }}" alt="">
+                          <img src="{{ URL::asset($article->image_url) }}" alt="">
                         </a>
                       </div>
                       <div class="blog-meta">

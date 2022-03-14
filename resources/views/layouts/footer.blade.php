@@ -24,7 +24,7 @@
                                         <a href="#"><i class="bi bi-instagram"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="bi bi-twitter"></i></a>
+                                        <a href="#"><i class="bi bi-shop"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -35,14 +35,14 @@
                 <div class="col-md-6">
                     <div class="footer-content">
                         <div class="footer-head">
-                            <h4>information</h4>
+                            <h4>informasi</h4>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                                Hubungi kami jika ada pertanyaan.
                             </p>
                             <div class="footer-contacts">
-                                <p><span>Tel:</span> +123 456 789</p>
-                                <p><span>Email:</span> contact@example.com</p>
-                                <p><span>Working Hours:</span> 9am-5pm</p>
+                                <p><span>Tel:</span> {{ $company->phone1 }}</p>
+                                <p><span>Email:</span> {{ $company->email }}</p>
+                                <p><span>Alamat:</span> {{ $company->address }}</p>
                             </div>
                         </div>
                     </div>

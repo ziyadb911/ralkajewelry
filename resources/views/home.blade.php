@@ -23,7 +23,7 @@
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">We build trust with you</h2>
-                                <p class="animate__animated animate__fadeInUp" style="font">Quality is what we focused on</p>
+                                <p class="animate__animated animate__fadeInUp" style="font-style: italic">Quality is what we focused on</p>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">No fake diamonds here</h2>
-                                <p class="animate__animated animate__fadeInUp">Purity is our main purpose</p>
+                                <p class="animate__animated animate__fadeInUp" style="font-style: italic">Purity is our main purpose</p>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">Apreciate yourself</h2>
-                                <p class="animate__animated animate__fadeInUp">You will never find diamonds that are perfect.
+                                <p class="animate__animated animate__fadeInUp" style="font-style: italic">You will never find diamonds that are perfect.
                                     But you always find diamonds that are perfectly yours</p>
                                 <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get
                                     Started</a>
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="section-headline text-center">
-                            <h2>Tentang Ralka Jewelry</h2>
+                            <h2>Tentang Kami</h2>
                         </div>
                     </div>
                 </div>
@@ -91,12 +91,13 @@
                         <div class="well-middle">
                             <div class="single-well">
                                 <a href="#">
-                                    <h4 class="sec-head">project Maintenance</h4>
+                                    <h4 class="sec-head">Ralka Jewelry</h4>
                                 </a>
                                 <p>
-                                    Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
-                                    aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur
-                                    adipisicing elit. Itaque quas officiis iure
+                                    kami adalah bla bla bla..
+                                </p>
+                                <p>
+                                    ini teks visi..
                                 </p>
                                 <ul>
                                     <li>
@@ -139,10 +140,10 @@
                         <div class="about-move">
                             <div class="services-details">
                                 <div class="single-services">
-                                    <a class="services-icon" href="#">
-                                        <i class="bi bi-briefcase"></i>
-                                    </a>
-                                    <h4>Expert Coder</h4>
+                                    <div class="services-icon">
+                                        <i class="bi bi-gem"></i>
+                                    </div>
+                                    <h4>Custom Ring</h4>
                                     <p>
                                         will have to make sure the prototype looks finished by inserting text or
                                         photo.make sure the prototype looks finished by.
@@ -156,10 +157,10 @@
                         <div class="about-move">
                             <div class="services-details">
                                 <div class="single-services">
-                                    <a class="services-icon" href="#">
-                                        <i class="bi bi-card-checklist"></i>
-                                    </a>
-                                    <h4>Creative Designer</h4>
+                                    <div class="services-icon">
+                                        <i class="bi bi-droplet-half"></i>
+                                    </div>
+                                    <h4>Chroming</h4>
                                     <p>
                                         will have to make sure the prototype looks finished by inserting text or
                                         photo.make sure the prototype looks finished by.
@@ -174,10 +175,10 @@
                         <div class=" about-move">
                             <div class="services-details">
                                 <div class="single-services">
-                                    <a class="services-icon" href="#">
-                                        <i class="bi bi-bar-chart"></i>
-                                    </a>
-                                    <h4>Wordpress Developer</h4>
+                                    <div class="services-icon">
+                                        <i class="bi bi-arrows-angle-expand"></i>
+                                    </div>
+                                    <h4>Resizing</h4>
                                     <p>
                                         will have to make sure the prototype looks finished by inserting text or
                                         photo.make sure the prototype looks finished by.
@@ -187,15 +188,16 @@
                             <!-- end about-details -->
                         </div>
                     </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12"></div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <!-- end col-md-4 -->
                         <div class=" about-move">
                             <div class="services-details">
                                 <div class="single-services">
-                                    <a class="services-icon" href="#">
-                                        <i class="bi bi-binoculars"></i>
-                                    </a>
-                                    <h4>Social Marketer </h4>
+                                    <div class="services-icon">
+                                        <i class="bi bi-vector-pen"></i>
+                                    </div>
+                                    <h4>Grafir</h4>
                                     <p>
                                         will have to make sure the prototype looks finished by inserting text or
                                         photo.make sure the prototype looks finished by.
@@ -211,10 +213,10 @@
                         <div class=" about-move">
                             <div class="services-details">
                                 <div class="single-services">
-                                    <a class="services-icon" href="#">
-                                        <i class="bi bi-brightness-high"></i>
-                                    </a>
-                                    <h4>Seo Expart</h4>
+                                    <div class="services-icon">
+                                        <i class="bi bi-card-heading"></i>
+                                    </div>
+                                    <h4>Sertifikasi Berlian</h4>
                                     <p>
                                         will have to make sure the prototype looks finished by inserting text or
                                         photo.make sure the prototype looks finished by.
@@ -225,7 +227,8 @@
                         </div>
                     </div>
                     <!-- End Left services -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-xs-12"></div>
+                    {{-- <div class="col-md-4 col-sm-4 col-xs-12">
                         <!-- end col-md-4 -->
                         <div class=" about-move">
                             <div class="services-details">
@@ -242,7 +245,7 @@
                             </div>
                             <!-- end about-details -->
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div><!-- End Services Section -->
@@ -256,7 +259,7 @@
                 <div class="col-lg-6 work-right-text d-flex align-items-center">
                     <div class="px-5 py-5 py-lg-0">
                         <h2>Buat perhiasan bersama kami</h2>
-                        <h5>Kata menarik.</h5>
+                        <h5>Kami menyediakan jasa pembuatan. Berminat?</h5>
                         <a href="#contact" class="ready-btn scrollto">Hubungi Kami</a>
                     </div>
                 </div>
@@ -403,9 +406,40 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
+                                <br><br>
+                                {{-- <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt=""> --}}
+                                <h3>Oyek</h3>
+                                <h4>Customer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
+                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
+                                    risus at semper.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <br><br>
+                                {{-- <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt=""> --}}
+                                <h3>Oyek</h3>
+                                <h4>Customer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
+                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
+                                    risus at semper.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <br><br>
+                                {{-- <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt=""> --}}
+                                <h3>Oyek</h3>
+                                <h4>Customer</h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                                     Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
@@ -416,65 +450,6 @@
                             </div>
                         </div><!-- End testimonial item -->
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{{ URL::asset('img/testimonials/testimonials-2.jpg') }}" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                    legam anim culpa.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{{ URL::asset('img/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                    veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                    minim.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{{ URL::asset('img/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
-                                    dolore labore illum veniam.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{{ URL::asset('img/testimonials/testimonials-5.jpg') }}" class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster
-                                    veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam
-                                    culpa fore nisi cillum quid.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
 
                     </div>
                     <div class="swiper-pagination"></div>

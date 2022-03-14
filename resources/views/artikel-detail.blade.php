@@ -73,7 +73,7 @@
                 <!-- single-blog start -->
                 <article class="blog-post-wrapper">
                   <div class="post-thumbnail">
-                    <img src="{{ $article->image_url }}" alt="">
+                    <img src="{{ URL::asset($article->image_url) }}" alt="">
                   </div>
                   <div class="post-information">
                     @if(isset($article->subtitle) && $article->subtitle != '')

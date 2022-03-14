@@ -11,6 +11,9 @@ class CompanyInfoSeeder extends Seeder
 		[
 			"id" => 1,
 			"name" => "Ralka Jewelry",
+			"phone1" => "+62 813 3118 2510",
+			"email" => "ralkajewelry@gmail.com",
+			"address" => "Jl. Kayoon, Surabaya, Indonesia",
 			"login_background" => "img/bg-login.jpg"
 		],
 	];
