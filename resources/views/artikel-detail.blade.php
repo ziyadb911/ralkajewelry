@@ -36,38 +36,7 @@
     <div class="blog-page area-padding">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-4">
-            <div class="page-head-blog">
-              @if(count($recentArticles) > 0)
-                <div class="single-blog-page">
-                  <!-- recent start -->
-                  <div class="left-blog">
-                    <h4>Artikel Terbaru</h4>
-                    <div class="recent-post">
-                      @foreach ($recentArticles as $recentArticle)
-                        <!-- start single post -->
-                        <div class="recent-single-post">
-                          <div class="post-img">
-                            <a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">
-                              <img src="{{ URL::asset($recentArticle->image_url ?? 'img/image-default.jpg') }}" alt="{{ $recentArticle->title }}">
-                            </a>
-                          </div>
-                          <div class="pst-content">
-                            <p><a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">{{ $recentArticle->title }}</a></p>
-                          </div>
-                        </div>
-                        <!-- End single post -->    
-                      @endforeach
-                    </div>
-                  </div>
-                  <!-- recent end -->
-                </div>
-              @endif
-            </div>
-          </div>
-          <!-- End left sidebar -->
-          <!-- Start single blog -->
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-8 col-sm-8 col-sm-12 col-xs-12">
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <!-- single-blog start -->
@@ -98,6 +67,35 @@
                 </article>
                 <!-- single-blog end -->
               </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <div class="page-head-blog">
+              @if(count($recentArticles) > 0)
+                <div class="single-blog-page">
+                  <!-- recent start -->
+                  <div class="left-blog">
+                    <h4>Artikel Terbaru</h4>
+                    <div class="recent-post">
+                      @foreach ($recentArticles as $recentArticle)
+                        <!-- start single post -->
+                        <div class="recent-single-post">
+                          <div class="post-img">
+                            <a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">
+                              <img src="{{ URL::asset($recentArticle->image_url ?? 'img/image-default.jpg') }}" alt="{{ $recentArticle->title }}">
+                            </a>
+                          </div>
+                          <div class="pst-content">
+                            <p><a href="{{ route('artikel.detail', ['article' => $recentArticle]) }}">{{ $recentArticle->title }}</a></p>
+                          </div>
+                        </div>
+                        <!-- End single post -->    
+                      @endforeach
+                    </div>
+                  </div>
+                  <!-- recent end -->
+                </div>
+              @endif
             </div>
           </div>
         </div>

@@ -482,11 +482,11 @@
                                             </a>
                                         </div>
                                         <div class="blog-meta">
-                                            <span class="date-type">
-                                                <i class="bi bi-clock"></i>{{ $recentArticle->date_indo }}
+                                            <span class="comments-type">
+                                                <i class="bi bi-clock"></i> {{ $recentArticle->date_indo }}
                                             </span>
-                                            <span class="date-type">
-                                                <i class="bi bi-folder"></i>{{ $recentArticle->articleCategory->name ?? '' }}
+                                            <span class="comments-type">
+                                                <i class="bi bi-folder"></i> <a href="{{ route('artikel', ['kategori' => $recentArticle->articleCategory]) }}">{{ $recentArticle->articleCategory->name ?? '' }}</a>
                                             </span>
                                         </div>
                                         <div class="blog-text">
