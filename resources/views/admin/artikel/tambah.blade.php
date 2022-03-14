@@ -189,6 +189,12 @@
                 <input type='text' name='title' id='title' placeholder='Judul' autocomplete="off" value="{{ $article->title ?? '' }}">
             </div>
         </div>
+        <div class='fields'>
+            <div class='ten wide field'>
+                <label>Sub Judul</label>
+                <input type='text' name='subtitle' id='subtitle' placeholder='Sub Judul' autocomplete="off" value="{{ $article->subtitle ?? '' }}">
+            </div>
+        </div>
         <div class="fields">
             <div class='four wide required field'>
                 <label>Tanggal</label>

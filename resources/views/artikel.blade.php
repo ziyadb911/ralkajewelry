@@ -28,11 +28,11 @@
             <div class="slider-content text-center">
               <div class="header-bottom">
                 <div class="layer2">
-                  <h1 class="title2">Artikel</h1>
+                  <h1 class="title2">Kumpulan Artikel</h1>
                 </div>
-                <div class="layer3">
+                {{-- <div class="layer3">
                   <h2 class="title3">Baca Kumpulan Artikel Menarik Disini</h2>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>

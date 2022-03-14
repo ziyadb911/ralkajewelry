@@ -15,6 +15,10 @@
 			<td style="width:85%">{{ $article->title }}</td>
 		</tr>
 		<tr>
+			<td style="width:15%"><h4 class='ui header'>SubJudul</h4></td>
+			<td style="width:85%">{{ $article->subtitle }}</td>
+		</tr>
+		<tr>
 			<td style="width:15%"><h4 class='ui header'>Tanggal</h4></td>
 			<td style="width:85%">{{ $article->date_formatted }}</td>
 		</tr>

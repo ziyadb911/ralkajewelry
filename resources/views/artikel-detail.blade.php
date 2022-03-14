@@ -19,11 +19,11 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="slider-content text-center">
               <div class="header-bottom">
-                <div class="layer2">
+                {{-- <div class="layer2">
                   <h1 class="title2">Artikel</h1>
-                </div>
+                </div> --}}
                 <div class="layer3">
-                  <h2 class="title3">Baca Kumpulan Artikel Menarik Disini</h2>
+                  <h2 class="title3">{{ $article->title }}</h2>
                 </div>
               </div>
             </div>
@@ -76,7 +76,9 @@
                     <img src="{{ $article->image_url }}" alt="">
                   </div>
                   <div class="post-information">
-                    <h2>{{ $article->title ?? '' }}</h2>
+                    @if(isset($article->subtitle) && $article->subtitle != '')
+                      <h2>{{ $article->subtitle ?? '' }}</h2>
+                    @endif
                     <div class="entry-meta">
                       <span><i class="bi bi-person"></i>{{ $article->userCreate->name ?? '' }}</span>
                       <span><i class="bi bi-clock"></i>{{ $article->date_indo ?? '' }}</span>

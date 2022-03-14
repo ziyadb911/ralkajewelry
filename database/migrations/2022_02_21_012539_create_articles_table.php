@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->foreignId('article_category_id');
             $table->string('slug');
             $table->string('title', 200);
+            $table->string('subtitle', 200)->nullable();
             $table->text('content');
             $table->dateTime('date')->useCurrent();
             $table->string('image_url', 200)->nullable();

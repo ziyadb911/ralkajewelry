@@ -66,6 +66,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'title' => ["required", "max:200"],
+            'subtitle' => ["nullable", "max:200"],
             'date' => ["required"],
             'article_category_id' => ["required", "exists:article_categories,id"],
             'content' => ["required"],
@@ -164,6 +165,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'title' => ["required", "max:200"],
+            'subtitle' => ["nullable", "max:200"],
             'date' => ["required"],
             'article_category_id' => ["required", "exists:article_categories,id"],
             'content' => ["required"],
