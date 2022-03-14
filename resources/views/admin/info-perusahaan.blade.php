@@ -219,6 +219,13 @@
 						<textarea name="address" id="address" rows="2" placeholder="Alamat" autocomplete="off">{{ $company->address ?? '' }}</textarea>
 					</div>
 				</div>
+				<div class="ui segment">
+					<h3>Teks Halaman Umum</h3>
+					<div class="field">
+						<label>Kata Menarik</label>
+						<textarea name="invitation_text" id="invitation_text" rows="2" placeholder="Kata Menarik" autocomplete="off">{{ $company->invitation_text ?? '' }}</textarea>
+					</div>
+				</div>
 			</div>
 			<div class='eight wide computer sixteen wide mobile column'>
 				<div class="ui segment">

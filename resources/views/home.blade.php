@@ -259,7 +259,7 @@
                 <div class="col-lg-6 work-right-text d-flex align-items-center">
                     <div class="px-5 py-5 py-lg-0">
                         <h2>Buat perhiasan bersama kami</h2>
-                        <h5>Kami menyediakan jasa pembuatan. Berminat?</h5>
+                        <h5>{{ $company->invitation_text ?? '' }}</h5>
                         <a href="#contact" class="ready-btn scrollto">Hubungi Kami</a>
                     </div>
                 </div>

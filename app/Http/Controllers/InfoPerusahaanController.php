@@ -30,6 +30,7 @@ class InfoPerusahaanController extends Controller
             'email' => ["nullable", "email", "max:100"],
             'url' => ["nullable", "max:100"],
             'address' => ["nullable"],
+            'invitation_text' => ["nullable"],
             'wa' => ["nullable", "max:20"],
             'facebook' => ["nullable", "max:100"],
             'instagram' => ["nullable", "max:100"],
