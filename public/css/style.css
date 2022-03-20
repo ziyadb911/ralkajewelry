@@ -172,12 +172,12 @@ div#preloader {
 }
 
 ::-moz-selection {
-  background: #115270;
+  background: #60ccdc;
   text-shadow: none;
 }
 
 ::selection {
-  background: #115270;
+  background: #60ccdc;
   text-shadow: none;
 }
 
@@ -1982,15 +1982,15 @@ span.email-notes {
 --------------------------------------------------------------*/
 .footer-area {
   padding: 40px 0;
-  background: #f9f9f9;
+  background: #115270;
 }
 
 .footer-head p {
-  color: #444;
+  color: #f9f9f9;
 }
 
 .footer-head h4 {
-  color: #444;
+  color: #f9f9f9;
   font-size: 16px;
   letter-spacing: 2px;
   padding-bottom: 10px;
@@ -2002,7 +2002,7 @@ span.email-notes {
 }
 
 .footer-logo h2 {
-  color: #222;
+  color: #f9f9f9;
   padding: 0;
   margin: 0;
   font-size: 36px;
@@ -2011,7 +2011,7 @@ span.email-notes {
 }
 
 .footer-logo h2 span {
-  color: #115270;
+  color: #f9f9f9;
 }
 
 .footer-icons ul li {
@@ -2019,8 +2019,8 @@ span.email-notes {
 }
 
 .footer-icons ul li a {
-  border: 1px solid #444;
-  color: #444;
+  border: 1px solid #f9f9f9;
+  color: #f9f9f9;
   display: block;
   font-size: 16px;
   height: 40px;
@@ -2033,6 +2033,10 @@ span.email-notes {
   align-items: center;
   justify-content: center;
   line-height: 0;
+}
+.footer-icons ul li a:hover{
+  border: 1px solid #60ccdc !important;
+  color:#60ccdc !important;
 }
 .footer-icons ul li a i {
   line-height: 0;
@@ -2049,7 +2053,7 @@ span.email-notes {
 }
 
 .footer-contacts p span {
-  color: #115270;
+  color: #f9f9f9;
   font-weight: 700;
 }
 
