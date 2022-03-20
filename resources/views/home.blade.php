@@ -4,9 +4,77 @@
 @endsection
 
 @section('jsready')
+    let forms = document.querySelectorAll('.php-email-form');
+
+    forms.forEach(function (e) {
+        e.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let thisForm = this;
+
+            let action = thisForm.getAttribute('action');
+            let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
+
+            if (!action) {
+                displayError(thisForm, 'The form action property is not set!')
+                return;
+            }
+            thisForm.querySelector('.loading').classList.add('d-block');
+            thisForm.querySelector('.error-message').classList.remove('d-block');
+            thisForm.querySelector('.sent-message').classList.remove('d-block');
+
+            let formData = new FormData(thisForm);
+
+            if (recaptcha) {
+                if (typeof grecaptcha !== "undefined") {
+                grecaptcha.ready(function () {
+                    try {
+                    grecaptcha.execute(recaptcha, { action: 'php_email_form_submit' })
+                        .then(token => {
+                        formData.set('recaptcha-response', token);
+                        php_email_form_submit(thisForm, action, formData);
+                        })
+                    } catch (error) {
+                    displayError(thisForm, error)
+                    }
+                });
+                } else {
+                displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+                }
+            } else {
+                php_email_form_submit(thisForm, action, formData);
+            }
+        });
+    });
 @endsection
 
 @section('jsfunction')
+    function php_email_form_submit(thisForm, action, formData) {
+        fetch(action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(response => {
+            if (response.ok) {
+                thisForm.querySelector('.loading').classList.remove('d-block');
+                thisForm.querySelector('.sent-message').classList.add('d-block');
+                thisForm.reset();
+            } else {
+                console.error(response.text());
+                throw new Error('Terjadi kesalahan saat mengirim data, silahkan coba lagi');
+            }
+        })
+        .catch((error) => {
+            displayError(thisForm, error);
+        });
+    }
+
+    function displayError(thisForm, error) {
+        thisForm.querySelector('.loading').classList.remove('d-block');
+        thisForm.querySelector('.error-message').innerHTML = error;
+        thisForm.querySelector('.error-message').classList.add('d-block');
+    }
 @endsection
 
 @section('content')
@@ -90,30 +158,25 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="well-middle">
                             <div class="single-well">
-                                <a href="#">
-                                    <h4 class="sec-head">Ralka Jewelry</h4>
-                                </a>
+                                <h4 class="sec-head">Ralka Jewelry</h4>
                                 <p>
-                                    kami adalah bla bla bla..
+                                    Ralka Jewelry sebagai sarana online penyedia perhiasan berlian maupun batu permata yang ekonomis dan tentunya dengan tetap mempertahankan kualitas setiap koleksinya.
+                                    Selain itu, Ralka Jewelry juga mengutamakan aspek Quality Control yang sangat ketat.
+                                    Hal ini termasuk membuat rangka yang kuat, fokus pada detail, dan berinovasi dengan memproduksi model terkini.
+                                    Ralka Jewelry juga menyediakan layanan pemesanan sesuai keinginan Anda, dan juga reparasi semua jenis perhiasan.
+                                    
                                 </p>
                                 <p>
-                                    ini teks visi..
+                                    Kami akan selalu mengembakan diri untuk menjadi yang terbaik.
+                                    Dengan itu, Ralka Jewelry akan selalu melayani Anda dengan baik dan lebih baik lagi.
+                                </p>
+                                <h4 class="sec-head">WHY US ?</h4>
+                                <p>
+                                    It's simple, Karena Ralka Jewelry memiliki pengrajin yang professional dan perlengkapan yang canggih untuk mewujudkan perhiasan sesuai yang Anda inginkan.
                                 </p>
                                 <ul>
                                     <li>
                                         <i class="bi bi-check"></i> Interior design Package
-                                    </li>
-                                    <li>
-                                        <i class="bi bi-check"></i> Building House
-                                    </li>
-                                    <li>
-                                        <i class="bi bi-check"></i> Reparing of Residentail Roof
-                                    </li>
-                                    <li>
-                                        <i class="bi bi-check"></i> Renovaion of Commercial Office
-                                    </li>
-                                    <li>
-                                        <i class="bi bi-check"></i> Make Quality Products
                                     </li>
                                 </ul>
                             </div>
@@ -145,8 +208,8 @@
                                     </div>
                                     <h4>Custom Ring</h4>
                                     <p>
-                                        will have to make sure the prototype looks finished by inserting text or
-                                        photo.make sure the prototype looks finished by.
+                                        Ralka Jewelry menyediakan Custom perhiasan sesuai yang anda inginkan
+                                        perak maupun emas, berlian ataupun batu permata.
                                     </p>
                                 </div>
                             </div>
@@ -162,8 +225,8 @@
                                     </div>
                                     <h4>Chroming</h4>
                                     <p>
-                                        will have to make sure the prototype looks finished by inserting text or
-                                        photo.make sure the prototype looks finished by.
+                                        Ralka Jewelry dapat membantu anda untuk pencucian (chrome)
+                                        perhiasan untuk tampak lebih baru. Kuning, rosegold, dan putih.
                                     </p>
                                 </div>
                             </div>
@@ -180,8 +243,7 @@
                                     </div>
                                     <h4>Resizing</h4>
                                     <p>
-                                        will have to make sure the prototype looks finished by inserting text or
-                                        photo.make sure the prototype looks finished by.
+                                        Kami dapat membantu merubah ukuran perhiasan Anda sehingga ketika digunakan akan sesuai.
                                     </p>
                                 </div>
                             </div>
@@ -199,8 +261,7 @@
                                     </div>
                                     <h4>Grafir</h4>
                                     <p>
-                                        will have to make sure the prototype looks finished by inserting text or
-                                        photo.make sure the prototype looks finished by.
+                                        Anda dapat memberi text pada perhiasan yang anda miliki.
                                     </p>
                                 </div>
                             </div>
@@ -218,8 +279,7 @@
                                     </div>
                                     <h4>Sertifikasi Berlian</h4>
                                     <p>
-                                        will have to make sure the prototype looks finished by inserting text or
-                                        photo.make sure the prototype looks finished by.
+                                        Ralka Jewelry dapat membantu anda dengan pengecekan Berlian yang anda miliki.
                                     </p>
                                 </div>
                             </div>
@@ -594,7 +654,7 @@
                                     <div class="my-3">
                                         <div class="loading">Loading</div>
                                         <div class="error-message"></div>
-                                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                                        <div class="sent-message">Pesan anda berhasil dikirim. Terima kasih telah menghubungi kami!</div>
                                     </div>
                                     <div class="text-center"><button type="submit">Kirim Pesan</button></div>
                                 </form>

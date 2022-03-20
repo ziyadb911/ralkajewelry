@@ -4,7 +4,6 @@
 <script src="{{ URL::asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
 <script src="{{ URL::asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 <script src="{{ URL::asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
-<script src="{{ URL::asset('vendor/php-email-form/validate.js') }}"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ URL::asset('js/main.js') }}"></script>
