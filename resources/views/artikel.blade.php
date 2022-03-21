@@ -100,13 +100,7 @@
                   <!-- End single blog -->
                   @endforeach
                   <div class="blog-pagination mb-3">
-                    <ul class="pagination">
-                      <li class="page-item"><a href="#" class="page-link">&lt;</a></li>
-                      <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                      <li class="page-item"><a href="#" class="page-link">2</a></li>
-                      <li class="page-item"><a href="#" class="page-link">3</a></li>
-                      <li class="page-item"><a href="#" class="page-link">&gt;</a></li>
-                    </ul>
+                    {{ $articles->links('vendor.pagination.bootstrap-4') }}
                   </div>
               @else
                 <div class="col-md-12 col-sm-12 col-xs-12">

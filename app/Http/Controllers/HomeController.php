@@ -43,7 +43,7 @@ class HomeController extends Controller
             $q->whereHas('tags', function ($q) use ($tagId) {
                 $q->where('id', $tagId);
             });
-        })->where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->get(); // belum paginate..
+        })->where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->paginate(4);
 
         $data = [
             'company' => $company,
