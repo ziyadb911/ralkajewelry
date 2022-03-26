@@ -174,11 +174,6 @@
                                 <p>
                                     It's simple, Karena Ralka Jewelry memiliki pengrajin yang professional dan perlengkapan yang canggih untuk mewujudkan perhiasan sesuai yang Anda inginkan.
                                 </p>
-                                <ul>
-                                    <li>
-                                        <i class="bi bi-check"></i> Interior design Package
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -367,8 +362,8 @@
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
                                             href="{{ URL::asset('img/portfolio/2.jpg') }}">
-                                            <h4>Blue Sea</h4>
-                                            <span>Photosho</span>
+                                            <h4>Blue Sapphire</h4>
+                                            {{-- <span></span> --}}
                                         </a>
                                     </div>
                                 </div>
