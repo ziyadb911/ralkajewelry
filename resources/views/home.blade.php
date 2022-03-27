@@ -87,7 +87,7 @@
 
                 <div class="carousel-inner" role="listbox">
 
-                    <div class="carousel-item active" style="background-image: url({{ URL::asset('/img/bg-login') }}.jpg)">
+                    <div class="carousel-item active" style="background-image: url({{ URL::asset('/img/hero-carousel/ring-blue') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">We build trust with you</h2>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/bg-login') }}.jpg)">
+                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/ring-blue') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">No fake diamonds here</h2>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/bg-login') }}.jpg)">
+                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/ring-blue') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">Apreciate yourself</h2>
@@ -149,7 +149,7 @@
                         <div class="well-left">
                             <div class="single-well">
                                 <a href="#">
-                                    <img src="{{ URL::asset('/img/about/1.jpg') }}" alt="">
+                                    <img src="{{ URL::asset('/img/about/ring-blue.jpg') }}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -306,10 +306,10 @@
         </div><!-- End Services Section -->
 
         <!-- ======= Rviews Section ======= -->
-        <div class="reviews-area">
+        <div class="reviews-area mb-5">
             <div class="row g-0">
                 <div class="col-lg-6">
-                    <img src="{{ URL::asset('/img/about/2.jpg') }}" alt="" class="img-fluid">
+                    <img src="{{ URL::asset('/img/about/ring-blue.jpg') }}" alt="" class="img-fluid">
                 </div>
                 <div class="col-lg-6 work-right-text d-flex align-items-center">
                     <div class="px-5 py-5 py-lg-0">
@@ -338,13 +338,12 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/1.jpg') }}" alt="" /></a>
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/fancy-yellow-sapphire.jpg') }}" alt="" /></a>
                                 <div class="add-actions text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/portfolio/1.jpg') }}">
-                                            <h4>Business City</h4>
-                                            <span>Web Development</span>
+                                            href="{{ URL::asset('img/galeri/fancy-yellow-sapphire.jpg') }}">
+                                            <h4>Fancy Yellow Sapphire</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -357,13 +356,12 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/2.jpg') }}" alt="" /></a>
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/ruby-burma.jpg') }}" alt="" /></a>
                                 <div class="add-actions text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/portfolio/2.jpg') }}">
-                                            <h4>Blue Sapphire</h4>
-                                            {{-- <span></span> --}}
+                                            href="{{ URL::asset('img/galeri/ruby-burma.jpg') }}">
+                                            <h4>Ruby Burma</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -376,13 +374,12 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/3.jpg') }}" alt="" /></a>
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/blue-sapphire.jpg') }}" alt="" /></a>
                                 <div class="add-actions text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/portfolio/3.jpg') }}">
-                                            <h4>Beautiful Nature</h4>
-                                            <span>Web Design</span>
+                                            href="{{ URL::asset('img/galeri/blue-sapphire.jpg') }}">
+                                            <h4>Blue Sapphire</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -395,13 +392,12 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/4.jpg') }}" alt="" /></a>
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/yellow-sapphire.jpg') }}" alt="" /></a>
                                 <div class="add-actions text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/portfolio/4.jpg') }}">
-                                            <h4>Creative Team</h4>
-                                            <span>Web design</span>
+                                            href="{{ URL::asset('img/galeri/yellow-sapphire.jpg') }}">
+                                            <h4>Yellow Sapphire</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -414,32 +410,28 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/5.jpg') }}" alt="" /></a>
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/pink-sapphire.jpg') }}" alt="" /></a>
                                 <div class="add-actions text-center text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/portfolio/5.jpg') }}">
-                                            <h4>Beautiful Flower</h4>
-                                            <span>Web Development</span>
+                                            href="{{ URL::asset('img/galeri/pink-sapphire.jpg') }}">
+                                            <h4>Pink Sapphire</h4>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- portfolio-item end -->
-
-                    <!-- portfolio-item start -->
-                    <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+                    
+                    <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img src="{{ URL::asset('img/portfolio/6.jpg') }}" alt="" /></a>
-                                <div class="add-actions text-center">
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/fancy-sapphire.jpg') }}" alt="" /></a>
+                                <div class="add-actions text-center text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/portfolio/6.jpg') }}">
-                                            <h4>Night Hill</h4>
-                                            <span>Photoshop</span>
+                                            href="{{ URL::asset('img/galeri/fancy-sapphire.jpg') }}">
+                                            <h4>Fancy Sapphire</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -447,7 +439,6 @@
                         </div>
                     </div>
                     <!-- portfolio-item end -->
-
                 </div>
             </div>
         </div><!-- End Portfolio Section -->
@@ -462,7 +453,6 @@
                         <div class="swiper-slide">
                             <div class="testimonial-item">
                                 <br><br>
-                                {{-- <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt=""> --}}
                                 <h3>Oyek</h3>
                                 <h4>Customer</h4>
                                 <p>
@@ -477,7 +467,6 @@
                         <div class="swiper-slide">
                             <div class="testimonial-item">
                                 <br><br>
-                                {{-- <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt=""> --}}
                                 <h3>Oyek</h3>
                                 <h4>Customer</h4>
                                 <p>
@@ -492,7 +481,6 @@
                         <div class="swiper-slide">
                             <div class="testimonial-item">
                                 <br><br>
-                                {{-- <img src="{{ URL::asset('img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt=""> --}}
                                 <h3>Oyek</h3>
                                 <h4>Customer</h4>
                                 <p>
