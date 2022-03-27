@@ -3,7 +3,7 @@
     <div class="container d-flex justify-content-between">
 
         <div class="logo">
-            <h1><a href="{{ route('home') }}"><span>Ralka</span>Jewelry</a></h1>
+            <h1 style="font-weight: 400"><a href="{{ route('home') }}"><span>RALKA</span> JEWELRY</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             {{-- <a href="index.html"><img src="{{ URL::asset('img/logo.png') }}" alt="" class="img-fluid"></a> --}}
         </div>

@@ -56,7 +56,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Alegreya", sans-serif;
+  font-family: "Source Serif 4", sans-serif;
   margin: 0 0 15px;
   color: #444;
   font-weight: 500;
@@ -1986,11 +1986,11 @@ span.email-notes {
 }
 
 .footer-head p {
-  color: #f9f9f9;
+  color: #cccccc;
 }
 
 .footer-head h4 {
-  color: #f9f9f9;
+  color: #cccccc;
   font-size: 16px;
   letter-spacing: 2px;
   padding-bottom: 10px;
@@ -2002,7 +2002,7 @@ span.email-notes {
 }
 
 .footer-logo h2 {
-  color: #f9f9f9;
+  color: #cccccc;
   padding: 0;
   margin: 0;
   font-size: 36px;
@@ -2011,7 +2011,7 @@ span.email-notes {
 }
 
 .footer-logo h2 span {
-  color: #f9f9f9;
+  color: #cccccc;
 }
 
 .footer-icons ul li {
@@ -2019,8 +2019,8 @@ span.email-notes {
 }
 
 .footer-icons ul li a {
-  border: 1px solid #f9f9f9;
-  color: #f9f9f9;
+  border: 1px solid #cccccc;
+  color: #cccccc;
   display: block;
   font-size: 16px;
   height: 40px;
@@ -2053,7 +2053,7 @@ span.email-notes {
 }
 
 .footer-contacts p span {
-  color: #f9f9f9;
+  color: #cccccc;
   font-weight: 700;
 }
 
