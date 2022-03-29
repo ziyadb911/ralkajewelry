@@ -374,12 +374,12 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
                         <div class="single-awesome-project">
                             <div class="awesome-img">
-                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/blue-sapphire.jpg') }}" alt="" /></a>
+                                <a href="#"><img class="galeri-img" src="{{ URL::asset('img/galeri/emerald-colombia.jpg') }}" alt="" /></a>
                                 <div class="add-actions text-center">
                                     <div class="project-dec">
                                         <a class="portfolio-lightbox" data-gallery="myGallery"
-                                            href="{{ URL::asset('img/galeri/blue-sapphire.jpg') }}">
-                                            <h4>Blue Sapphire</h4>
+                                            href="{{ URL::asset('img/galeri/emerald-colombia.jpg') }}">
+                                            <h4>Emerald Colombia</h4>
                                         </a>
                                     </div>
                                 </div>
