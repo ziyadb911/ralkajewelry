@@ -9,7 +9,7 @@
                             <div class="footer-logo">
                                 <h2 style="font-weight: 400"><span>RALKA</span> JEWELRY</h2>
                             </div>
-                            <p>Silahkan Kunjungi Media Sosial Kami Untuk Informasi Terbaru.</p>
+                            <p>Silahkan Kunjungi Media Sosial Kami Untuk Koleksi Terbaru.</p>
                             <div class="footer-icons">
                                 <ul>
                                     <li>
@@ -36,10 +36,10 @@
                 <div class="col-md-6">
                     <div class="footer-content">
                         <div class="footer-head">
-                            <h4>informasi</h4>
-                            <p>
+                            <h4>Customer Service</h4>
+                            {{-- <p>
                                 Hubungi kami jika ada pertanyaan.
-                            </p>
+                            </p> --}}
                             <div class="footer-contacts">
                                 <p><span>Tel:</span> {{ $company->phone1 }}</p>
                                 <p><span>Email:</span> {{ $company->email }}</p>

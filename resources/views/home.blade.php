@@ -581,7 +581,7 @@
                     <div class="row">
 
                         <!-- Start Google Map -->
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <!-- Start Map -->
                             <div class="row">
                                 <!-- Start contact icon column -->
@@ -612,9 +612,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- End Google Map -->
-
+                        <div class="col-md-3"></div>
                         <!-- Start  contact -->
                         <div class="col-md-6">
                             <div class="form contact-form">
