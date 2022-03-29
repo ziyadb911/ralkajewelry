@@ -20,6 +20,8 @@ class CompanyInfo extends Model
         'facebook',
         'instagram',
         'twitter',
+        'tiktok',
+        'tokopedia',
         'logo',
         'login_background',
     ];

@@ -35,6 +35,8 @@ class InfoPerusahaanController extends Controller
             'facebook' => ["nullable", "max:100"],
             'instagram' => ["nullable", "max:100"],
             'twitter' => ["nullable", "max:100"],
+            'tiktok' => ["nullable", "max:100"],
+            'tokopedia' => ["nullable", "max:100"],
             'logo' => ["nullable"],
         ], [
             'name.required' => 'Nama Perusahaan tidak boleh kosong.',
@@ -48,6 +50,8 @@ class InfoPerusahaanController extends Controller
             'facebook.max' => 'Facebook maksimal 100 karakter.',
             'instagram.max' => 'Instagram maksimal 100 karakter.',
             'twitter.max' => 'Twitter maksimal 100 karakter.',
+            'twitter.max' => 'TikTok maksimal 100 karakter.',
+            'twitter.max' => 'Tokopedia maksimal 100 karakter.',
         ]);
 
         DB::beginTransaction();

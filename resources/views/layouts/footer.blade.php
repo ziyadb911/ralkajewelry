@@ -9,22 +9,23 @@
                             <div class="footer-logo">
                                 <h2 style="font-weight: 400"><span>RALKA</span> JEWELRY</h2>
                             </div>
-
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                            <p>Silahkan Kunjungi Media Sosial Kami Untuk Informasi Terbaru.</p>
                             <div class="footer-icons">
                                 <ul>
                                     <li>
-                                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                        <a target="_blank" href="{{ $company->wa ?? '#' }}"><i class="bi bi-whatsapp"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="bi bi-facebook"></i></a>
+                                        <a target="_blank" href="{{ $company->facebook ?? '#' }}"><i class="bi bi-facebook"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="bi bi-instagram"></i></a>
+                                        <a target="_blank" href="{{ $company->instagram ?? '#' }}"><i class="bi bi-instagram"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="bi bi-shop"></i></a>
+                                        <a target="_blank" href="{{ $company->tiktok ?? '#' }}"><i class="bi bi-tiktok"></i></a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="{{ $company->tokopedia ?? '#' }}"><i class="bi bi-shop"></i></a>
                                     </li>
                                 </ul>
                             </div>

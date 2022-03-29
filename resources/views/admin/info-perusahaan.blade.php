@@ -246,6 +246,14 @@
 						<label>Twitter</label>
 						<input type='text' name='twitter' id='twitter' placeholder="Twitter" autocomplete="off" value="{{ $company->twitter ?? '' }}">
 					</div>
+					<div class="field">
+						<label>TikTok</label>
+						<input type='text' name='tiktok' id='tiktok' placeholder="TikTok" autocomplete="off" value="{{ $company->tiktok ?? '' }}">
+					</div>
+					<div class="field">
+						<label>Tokopedia</label>
+						<input type='text' name='tokopedia' id='tokopedia' placeholder="Tokopedia" autocomplete="off" value="{{ $company->tokopedia ?? '' }}">
+					</div>
 				</div>
 				<div class="ui segment">
 						<div class='sixteen wide field'>
