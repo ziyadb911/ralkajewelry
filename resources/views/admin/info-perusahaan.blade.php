@@ -51,29 +51,43 @@
 			wa:{
 				identifier: 'wa',
 				rules: [{
-					type   : 'maxLength[100]',
-					prompt : 'WhatsApp URL maksimal 100 karakter'
+					type   : 'maxLength[200]',
+					prompt : 'URL WhatsApp maksimal 200 karakter'
 				}]
 			},
 			facebook:{
 				identifier: 'facebook',
 				rules: [{
-					type   : 'maxLength[100]',
-					prompt : 'Facebook URL maksimal 100 karakter'
+					type   : 'maxLength[200]',
+					prompt : 'URL Facebook maksimal 200 karakter'
 				}]
 			},
 			instagram:{
 				identifier: 'instagram',
 				rules: [{
-					type   : 'maxLength[100]',
-					prompt : 'Instagram URL maksimal 100 karakter'
+					type   : 'maxLength[200]',
+					prompt : 'URL Instagram maksimal 200 karakter'
+				}]
+			},
+			tiktok:{
+				identifier: 'tiktok',
+				rules: [{
+					type   : 'maxLength[200]',
+					prompt : 'URL TikTok maksimal 200 karakter'
+				}]
+			},
+			tokopedia:{
+				identifier: 'tokopedia',
+				rules: [{
+					type   : 'maxLength[200]',
+					prompt : 'URL Tokopedia maksimal 200 karakter'
 				}]
 			},
 			twitter:{
 				identifier: 'twitter',
 				rules: [{
-					type   : 'maxLength[100]',
-					prompt : 'Twitter URL maksimal 100 karakter'
+					type   : 'maxLength[200]',
+					prompt : 'URL Twitter maksimal 200 karakter'
 				}]
 			},
 		}
@@ -231,28 +245,28 @@
 				<div class="ui segment">
 					<h3>Social Media</h3>
 					<div class="field">
-						<label>WhatsApp</label>
-						<input type='text' name='wa' id='wa' placeholder="WhatsApp" autocomplete="off" value="{{ $company->wa ?? '' }}">
+						<label>URL WhatsApp</label>
+						<input type='text' name='wa' id='wa' placeholder="URL WhatsApp" autocomplete="off" value="{{ $company->wa ?? '' }}">
 					</div>
 					<div class="field">
-						<label>Facebook</label>
-						<input type="text" name="facebook" id='facebook' placeholder="Facebook" autocomplete="off" value="{{ $company->facebook ?? '' }}">
+						<label>URL Facebook</label>
+						<input type="text" name="facebook" id='facebook' placeholder="URL Facebook" autocomplete="off" value="{{ $company->facebook ?? '' }}">
 					</div>
 					<div class="field">
-						<label>Instagram</label>
-						<input type='text' name='instagram' id='instagram' placeholder="Instagram" autocomplete="off" value="{{ $company->instagram ?? '' }}">
+						<label>URL Instagram</label>
+						<input type='text' name='instagram' id='instagram' placeholder="URL Instagram" autocomplete="off" value="{{ $company->instagram ?? '' }}">
 					</div>
 					<div class="field">
-						<label>Twitter</label>
-						<input type='text' name='twitter' id='twitter' placeholder="Twitter" autocomplete="off" value="{{ $company->twitter ?? '' }}">
+						<label>URL TikTok</label>
+						<input type='text' name='tiktok' id='tiktok' placeholder="URL TikTok" autocomplete="off" value="{{ $company->tiktok ?? '' }}">
 					</div>
 					<div class="field">
-						<label>TikTok</label>
-						<input type='text' name='tiktok' id='tiktok' placeholder="TikTok" autocomplete="off" value="{{ $company->tiktok ?? '' }}">
+						<label>URL Tokopedia</label>
+						<input type='text' name='tokopedia' id='tokopedia' placeholder="URL Tokopedia" autocomplete="off" value="{{ $company->tokopedia ?? '' }}">
 					</div>
 					<div class="field">
-						<label>Tokopedia</label>
-						<input type='text' name='tokopedia' id='tokopedia' placeholder="Tokopedia" autocomplete="off" value="{{ $company->tokopedia ?? '' }}">
+						<label>URL Twitter</label>
+						<input type='text' name='twitter' id='twitter' placeholder="URL Twitter" autocomplete="off" value="{{ $company->twitter ?? '' }}">
 					</div>
 				</div>
 				<div class="ui segment">
