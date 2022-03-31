@@ -107,8 +107,8 @@
         }
     });
 
-	$('#login_background').change(function (e) {		
-		var jmlFoto = $('#imgPreview').find('.ui.image').length;
+	$('#login_background').change(function (e) {
+		var jmlFoto = $('#loginImgPreview').find('.ui.image').length;
 		var inputFile = $(this)[0];
 		var files = inputFile.files;
 		if (files.length > 0) {
@@ -131,7 +131,7 @@
 					var fotobaru = `<div class='ui small image rounded' >
                         <img src="${base64}" alt="login_background">
 					</div>`;
-					$('#imgPreview').html(fotobaru);
+					$('#loginImgPreview').html(fotobaru);
 					$('#formInfoPerusahaan').removeClass('loading');
 				}).catch(function (err) {
 					$('#formInfoPerusahaan').removeClass('loading');
@@ -142,7 +142,46 @@
             var fotobaru = `<div class='ui small image rounded' >
                 Tidak ada foto
             </div>`;
-            $('#imgPreview').html(fotobaru);
+            $('#loginImgPreview').html(fotobaru);
+        }
+	});
+
+	$('#invitation_image_url').change(function (e) {
+		var jmlFoto = $('#invitationImgPreview').find('.ui.image').length;
+		var inputFile = $(this)[0];
+		var files = inputFile.files;
+		if (files.length > 0) {
+			var uploadpath = inputFile.value;
+			var fileExtension = uploadpath.substring(uploadpath.lastIndexOf(".") + 1, uploadpath.length).toLowerCase();
+			if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
+				$(this).val("");
+				showMessage('error', 'Foto harus berupa file gambar (.jpg / .jpeg / .png).');
+				return;
+			}
+			if (files[0].size / 1024 / 1024 > 5) {
+				$(this).val("");
+				showMessage('error', 'File size tidak boleh melebihi 5 MB.');
+				return;
+			}
+            console.log(files.length);
+            $('#formInfoPerusahaan').addClass('loading');
+			$.each(files, function (key, val) {
+				compressImage(val).then(function (base64) {
+					var fotobaru = `<div class='ui small image rounded' >
+                        <img src="${base64}" alt="login_background">
+					</div>`;
+					$('#invitationImgPreview').html(fotobaru);
+					$('#formInfoPerusahaan').removeClass('loading');
+				}).catch(function (err) {
+					$('#formInfoPerusahaan').removeClass('loading');
+					console.log("ErrSelesai", err.message);
+				});
+			});
+		}else{
+            var fotobaru = `<div class='ui small image rounded' >
+                Tidak ada foto
+            </div>`;
+            $('#invitationImgPreview').html(fotobaru);
         }
 	});
 @endsection
@@ -234,10 +273,27 @@
 					</div>
 				</div>
 				<div class="ui segment">
-					<h3>Teks Halaman Umum</h3>
-					<div class="field">
+					<h3>Halaman Umum</h3>
+					<div class="sixteen wide field">
 						<label>Kata Menarik</label>
 						<textarea name="invitation_text" id="invitation_text" rows="2" placeholder="Kata Menarik" autocomplete="off">{{ $company->invitation_text ?? '' }}</textarea>
+					</div>
+					<div class='sixteen wide field'>
+						<label>{{isset($company) ? 'Ganti' : ''}} Foto Menarik <span style="font-size: 8pt; font-weight: normal;">(Maks. 5MB)</span></label>
+						<input type='file' class='ui button' name='invitation_image_url' id='invitation_image_url' accept='.png, .jpg, .jpeg'>
+					</div>
+					<div class='ui small images' id='invitationImgPreview'>
+						@if(isset($company))
+							@if(isset($company->invitation_image_url))
+								<div class='ui small image rounded'>
+									<img src="{{ URL::asset($company->invitation_image_url) }}" alt="{{ $company->invitation_image_url }}">
+								</div>
+							@else
+								<div class='ui small image rounded'>
+									Tidak ada gambar
+								</div>
+							@endif
+						@endif
 					</div>
 				</div>
 			</div>
@@ -270,11 +326,11 @@
 					</div>
 				</div>
 				<div class="ui segment">
-						<div class='sixteen wide field'>
-							<label>{{isset($company) ? 'Ganti' : ''}} Background Login <span style="font-size: 8pt; font-weight: normal;">(Maks. 5MB)</span></label>
-							<input type='file' class='ui button' name='login_background' id='login_background' accept='.png, .jpg, .jpeg'>
-						</div>
-					<div class='ui small images' id='imgPreview'>
+					<div class='sixteen wide field'>
+						<label>{{isset($company) ? 'Ganti' : ''}} Background Login <span style="font-size: 8pt; font-weight: normal;">(Maks. 5MB)</span></label>
+						<input type='file' class='ui button' name='login_background' id='login_background' accept='.png, .jpg, .jpeg'>
+					</div>
+					<div class='ui small images' id='loginImgPreview'>
 						@if(isset($company))
 							@if(isset($company->login_background))
 								<div class='ui small image rounded'>

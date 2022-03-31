@@ -16,6 +16,7 @@ class CompanyInfo extends Model
         'url',
         'address',
         'invitation_text',
+        'invitation_image_url',
         'wa',
         'facebook',
         'instagram',

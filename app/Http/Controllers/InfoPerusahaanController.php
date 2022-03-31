@@ -90,6 +90,40 @@ class InfoPerusahaanController extends Controller
                 $company->login_background = $lokasisimpan;
                 $company->save();
             }
+            
+            if (isset($request->invitation_image_url)) {
+                if (File::exists($company->invitation_image_url)) {
+                    File::delete($company->invitation_image_url);
+                }
+                $path2 = 'img/promo';
+                if (!File::isDirectory($path2)) {
+                    File::makeDirectory($path2, 0777, true, true);
+                }
+                $namafoto = "ralka-jewelry-promo-" . now()->format('Hisu') . '.jpg';
+                $img2 = Image::make($request->invitation_image_url);
+                $width2 = $img2->width();
+                $height2 = $img2->height();
+                $img2 = $img2->encode('jpg', 100);
+                if ($width2 > $height2) {
+                    if ($width2 > 2000) {
+                        $img2->resize(2000, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                } else {
+                    if ($height2 > 2000) {
+                        $img2->resize(null, 2000, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+                    }
+                }
+
+                $lokasisimpan2 = $path2 . "/" . $namafoto;
+                $img2->save($lokasisimpan2);
+
+                $company->invitation_image_url = $lokasisimpan2;
+                $company->save();
+            }
             DB::commit();
             return response()->json([
                 'success' => true,

@@ -309,7 +309,7 @@
         <div class="reviews-area mb-5">
             <div class="row g-0">
                 <div class="col-lg-6">
-                    <img src="{{ URL::asset('/img/about/ring-blue.jpg') }}" alt="" class="img-fluid">
+                    <img src="{{ URL::asset($company->invitation_image_url) }}" alt="" class="img-fluid">
                 </div>
                 <div class="col-lg-6 work-right-text d-flex align-items-center">
                     <div class="px-5 py-5 py-lg-0">
