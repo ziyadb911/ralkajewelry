@@ -14,8 +14,8 @@
                 <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#about">Tentang Kami</a></li>
                 <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#services">Layanan</a></li>
                 <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#portfolio">Galeri</a></li>
-                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#blog">Artikel</a></li>
                 <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#contact">Hubungi Kami</a></li>
+                <li><a class="nav-link scrollto" href="{{ Request::routeIs('artikel*') ? route('home') : '' }}#blog">Artikel</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

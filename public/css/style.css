@@ -186,7 +186,7 @@ div#preloader {
 }
 
 .area-padding-2 {
-  padding: 70px 0px 50px;
+  padding: 70px 0px 0px;
 }
 
 .padding-2 {
@@ -1290,7 +1290,7 @@ div#preloader {
 # Quote
 --------------------------------------------------------------*/
 .suscribe-area {
-  background: #115270 none repeat scroll 0 0;
+  background: silver none repeat scroll 0 0;
   padding: 30px 0;
 }
 

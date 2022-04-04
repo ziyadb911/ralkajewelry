@@ -322,7 +322,7 @@
         </div><!-- End Rviews Section -->
 
         <!-- ======= Portfolio Section ======= -->
-        <div id="portfolio" class="portfolio-area area-padding fix">
+        <div id="portfolio" class="portfolio-area area-padding-2 fix">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -442,6 +442,56 @@
                 </div>
             </div>
         </div><!-- End Portfolio Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <div id="contact" class="contact-area">
+            <div class="contact-inner area-padding">
+                <div class="contact-overly"></div>
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="section-headline text-center">
+                                <h2>Hubungi Kami</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+
+                        <div class="col-md-3"></div>
+                        <!-- Start  contact -->
+                        <div class="col-md-6">
+                            <div class="form contact-form">
+                                <form action="{{ route('kontak') }}" method="post" role="form" class="php-email-form">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" id="name"
+                                            placeholder="Nama" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <input type="text" class="form-control" name="phone" id="phone"
+                                            placeholder="No. Handhpone" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <textarea class="form-control" name="message" rows="5" placeholder="Pesan"></textarea>
+                                    </div>
+                                    <div class="my-3">
+                                        <div class="loading">Loading</div>
+                                        <div class="error-message"></div>
+                                        <div class="sent-message">Pesan anda berhasil dikirim. Terima kasih telah menghubungi kami!</div>
+                                    </div>
+                                    <div class="text-center"><button type="submit">Kirim Pesan</button></div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Left contact -->
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Contact Section -->
 
         <!-- ======= Testimonials Section ======= -->
         <div id="testimonials" class="testimonials">
@@ -564,91 +614,6 @@
                 </div>
             </div>
         </div><!-- End Suscribe Section -->
-
-        <!-- ======= Contact Section ======= -->
-        <div id="contact" class="contact-area">
-            <div class="contact-inner area-padding">
-                <div class="contact-overly"></div>
-                <div class="container ">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="section-headline text-center">
-                                <h2>Hubungi Kami</h2>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-
-                        <!-- Start Google Map -->
-                        {{-- <div class="col-md-6">
-                            <!-- Start Map -->
-                            <div class="row">
-                                <!-- Start contact icon column -->
-                                <div class="col-md-12">
-                                    <div class="contact-icon text-center">
-                                        <div class="single-icon">
-                                            <i class="bi bi-phone"></i>
-                                            <p>Hubungi: {{ $company->phone1 ?? '' }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Start contact icon column -->
-                                <div class="col-md-12">
-                                    <div class="contact-icon text-center">
-                                        <div class="single-icon">
-                                            <i class="bi bi-envelope"></i>
-                                            <p>Email: {{ $company->email ?? '' }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Start contact icon column -->
-                                <div class="col-md-12">
-                                    <div class="contact-icon text-center">
-                                        <div class="single-icon">
-                                            <i class="bi bi-geo-alt"></i>
-                                            <p>Alamat: {!! nl2br($company->address ?? '') !!}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <!-- End Google Map -->
-                        <div class="col-md-3"></div>
-                        <!-- Start  contact -->
-                        <div class="col-md-6">
-                            <div class="form contact-form">
-                                <form action="{{ route('kontak') }}" method="post" role="form" class="php-email-form">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Nama" required>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <input type="text" class="form-control" name="phone" id="phone"
-                                            placeholder="No. Handhpone" required>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <textarea class="form-control" name="message" rows="5" placeholder="Pesan"></textarea>
-                                    </div>
-                                    <div class="my-3">
-                                        <div class="loading">Loading</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Pesan anda berhasil dikirim. Terima kasih telah menghubungi kami!</div>
-                                    </div>
-                                    <div class="text-center"><button type="submit">Kirim Pesan</button></div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- End Left contact -->
-                    </div>
-                </div>
-            </div>
-        </div><!-- End Contact Section -->
-
     </main><!-- End #main -->
 @endsection
 
