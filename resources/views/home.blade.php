@@ -87,7 +87,7 @@
 
                 <div class="carousel-inner" role="listbox">
 
-                    <div class="carousel-item active" style="background-image: url({{ URL::asset('/img/hero-carousel/ring-blue') }}.jpg)">
+                    <div class="carousel-item active" style="background-image: url({{ URL::asset('/img/hero-carousel/hero1') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">We build trust with you</h2>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/ring-blue') }}.jpg)">
+                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/hero2') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">No fake diamonds here</h2>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/ring-blue') }}.jpg)">
+                    <div class="carousel-item" style="background-image: url({{ URL::asset('/img/hero-carousel/hero3') }}.jpg)">
                         <div class="carousel-container">
                             <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">Apreciate yourself</h2>
@@ -149,7 +149,7 @@
                         <div class="well-left">
                             <div class="single-well">
                                 <a href="#">
-                                    <img src="{{ URL::asset('/img/about/ring-blue.jpg') }}" alt="">
+                                    <img src="{{ URL::asset('/img/about/about.jpg') }}" alt="">
                                 </a>
                             </div>
                         </div>
