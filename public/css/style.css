@@ -267,7 +267,8 @@ div#preloader {
 }
 
 .header-bg {
-  background: url(../img/blogs/blog.jpg);
+  background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(17,82,112,1) 25%, rgba(74,124,146,1) 75%, rgba(0,0,0,1) 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -2126,7 +2127,7 @@ span.email-notes {
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1169px) {
   .slider-content {
-    padding: 146px 0;
+    padding: 00px 0;
   }
 
   .work-right-text {
@@ -2380,7 +2381,7 @@ span.email-notes {
   }
 
   .page-area .slider-content {
-    padding: 50px 0;
+    padding: 0px 0;
   }
 
   .search-option input {

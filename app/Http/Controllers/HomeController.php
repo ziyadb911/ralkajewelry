@@ -32,7 +32,7 @@ class HomeController extends Controller
         $company = CompanyInfo::findOrFail(1);
         $articleCategories = ArticleCategory::orderBy("name", "ASC")->get();
         $tags = Tag::orderBy("name", "ASC")->get();
-        $recentArticles = self::getRecentArticles(3);
+        $recentArticles = self::getRecentArticles(4);
 
         // list artikel yg tampil dan di filter
         $articles = Article::when(isset($cari), function ($q) use ($cari) {
@@ -61,7 +61,7 @@ class HomeController extends Controller
             abort(404);
         }
         $company = CompanyInfo::findOrFail(1);
-        $recentArticles = self::getRecentArticles(3);
+        $recentArticles = self::getRecentArticles(4);
         $data = [
             'company' => $company,
             'recentArticles' => $recentArticles,
@@ -70,7 +70,7 @@ class HomeController extends Controller
         return view('artikel-detail', $data);
     }
 
-    private function getRecentArticles(int $limit = 3)
+    private function getRecentArticles(int $limit = 5)
     {
         return Article::where("is_shown", true)->orderBy("date", "DESC")->orderBy("created_at", "DESC")->limit($limit)->get();
     }
